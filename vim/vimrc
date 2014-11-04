@@ -1,0 +1,222 @@
+autocmd! bufwritepost .vimrc source %
+
+" Vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+" Bundles
+Bundle 'kien/ctrlp.vim'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'git://github.com/jcf/vim-latex.git'
+Bundle 'vim-scripts/a.vim'
+Bundle 'ervandew/supertab'
+Bundle 'majutsushi/tagbar'
+Bundle 'vim-pandoc/vim-pandoc'
+Bundle 'tomtom/tcomment_vim'
+
+set nocompatible
+set mouse=a
+set backspace=indent,eol,start
+set gcr=a:blinkon0
+set autoread
+set noeb vb t_vb=
+if has('autocmd')
+	autocmd GUIEnter * set visualbell t_vb=
+endif
+
+set wrap
+set lbr
+set display=lastline
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set cindent
+set autoindent
+set ignorecase
+set hlsearch
+set clipboard+=unnamed
+
+""Folding
+set nofoldenable
+"set foldmethod=indent
+"set foldlevel=0
+"set foldnestmax=1
+"set foldcolumn=4
+"autocmd BufEnter,BufCreate *.h,*.c,*cpp setlocal foldmethod=syntax
+"noremap <space> za
+
+""set ruler
+set laststatus=2
+set statusline=[%03l,%03v][%p%%]\ %=%F%m%r%h%w%<\ [%{&ff}:%{&fenc!=''?&fenc:&enc}]\ [%Y]
+
+syntax on
+if has("gui_running")
+	if has("mac")
+		"set noantialias
+		set number
+		"set guifont=AnonymousPro:h16
+        set guifont=Menlo:h14
+		"set guifont=InconsolataLGC:h14
+		"set guifont=Monaco:h14
+		"set guifont=PragmataPro:h16
+        "set guifont=SourceCodePro-Regular:h16
+        "set guifont=CourierNewPSMT:h16
+		set printfont=h11 ""Print Font
+		set linespace=4
+		set guioptions-=r
+		set guioptions-=T
+		set guioptions-=e
+		set guioptions-=L
+		set lines=36
+		set columns=100
+		"set transparency=5
+		"set background=dark
+		"colorscheme iceberg
+		"colorscheme mac_classic
+		"colorscheme zenburn
+        "let moria_monochrome = 1
+		"colorscheme moria
+		"colorscheme solarized
+		"colorscheme birds_of_paradise
+		colorscheme monocolor
+	    "colorscheme SUNIXcolor
+		map <D-1> :set co=90<CR> 
+		"map <D-2> :set co=120<CR>:winc =<CR> 
+		map <D-2> :set co=120<CR>
+		map <D-3> :set co=150<CR>
+		map <D-d> :maca toggleFileBrowser:<CR>
+        autocmd InsertEnter,InsertLeave * set cul!
+	endif
+else
+	set guioptions-=e
+	set t_Co=256
+	set number
+	"set background=dark
+    "let g:solarized_termcolors=256    
+	"colorscheme solarized
+	"colorscheme moria256
+	"colorscheme xoria256-pluk
+	colorscheme monocolor
+	"colorscheme mac_classic
+	"colorscheme vgod
+    autocmd InsertEnter,InsertLeave * set cul!
+endif
+
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+""Backup
+set noswapfile
+set backupdir=~/.vim/backup
+
+let mapleader=","
+map ; <C-d>
+map ' <C-u>
+"" standard keys for wrapped lines
+set whichwrap+=<,>,[,]
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+"" map sort function to a key
+vnoremap <Leader>s :sort<CR>
+"" easier moving of code block
+vnoremap < <gv
+vnoremap > >gv
+
+" Automatically open, but do not go to (if there are errors) the quickfix /
+" location list window, or close it when is has become empty.
+"
+" Note: Must allow nesting of autocmds to enable any customizations for quickfix
+" buffers.
+" Note: Normally, :cwindow jumps to the quickfix window if the command opens it
+" (but not if it's already open). However, as part of the autocmd, this doesn't
+" seem to happen.
+"autocmd QuickFixCmdPost [^l]* nested cwindow
+"autocmd QuickFixCmdPost    l* nested lwindow
+autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+
+""""""""""""""""""""""""""
+"" LANGUAGES CUSTOMIZATION
+filetype on
+filetype plugin on
+filetype indent on
+
+if !filereadable(expand("%:p:h")."/Makefile")
+	autocmd	BufEnter,BufCreate *.cpp setlocal makeprg=g++\ -Wall\ -o\ %<\ %
+	autocmd BufEnter,BufCreate *.c setlocal makeprg=gcc\ -Wall\ -o\ %<\ %
+endif
+""""""""""""""""""""""""""
+"" PLUGINS
+
+"" A.vim switch between header and source file
+nnoremap <C-a> :A<CR>
+
+""tocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"map <silent> <C-n> :NERDTreeToggle<CR> 
+let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
+set modifiable
+
+map <silent> <C-n> :NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_open_on_gui_startup=0
+
+"" tagbar
+nmap <C-g> :TagbarToggle<CR>
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_ViewRule_pdf = 'open -a Preview.app' 
+let Tex_FoldedSections=""
+let Tex_FoldedEnvironments=""
+let Tex_FoldedMisc=""
+let g:Imap_UsePlaceHolders = 0
+" Delete .aux .log ... files when .tex file is being quit
+autocmd BufWinLeave *.tex !latexmk -c &
+map <Leader>c :!latexmk -c &<CR> 
+autocmd BufNewFile,BufRead *.tex setlocal spell
+let g:tex_comment_nospell= 1
+"" Forward search support for Skim.app
+map ,r :w<CR>:silent !/Applications/Skim.app/Contents/SharedSupport/displayline <C-r>=line('.')<CR> %<.pdf %<CR>
+
+" CtrlP
+let g:ctrlp_map = '<leader>.'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/Movies/*,*Pictures/*,*/Music/*,*/Library/*,*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.rvm$'
+let g:ctrlp_max_height=15
+
+" Vim-pandoc
+set nojoinspaces
+let g:pandoc_no_folding = 1
+map <Leader>p :PandocPdf<CR>
+map <Leader>o :PandocPdfOpen<CR>
+
+" TComment
+let g:tcommentOptions = {'whitespace' : 'no'}
+map <silent> <Leader>c :TComment<CR>
+
+" YouCompleteMe
+let g:ycm_key_invoke_completion = '<TAB>'
+let g:ycm_complete_in_strings = 1
+let g:ycm_complete_in_comments = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
