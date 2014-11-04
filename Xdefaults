@@ -1,0 +1,10 @@
+xterm*scrollBar: false
+xterm*jumpScroll: false
+xterm*cursorColor: darkSlateBlue 
+
+! xterm*Background: darkSlateBlue
+! xterm*Foreground: black
+XTerm*vt100*geometry: 75x21
+
+xterm*termName: xterm-256color                                    
+xterm*faceName: Monaco
