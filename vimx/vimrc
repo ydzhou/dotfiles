@@ -1,25 +1,6 @@
 autocmd! bufwritepost .vimrc source %
 
-" Vundle
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-
-" Bundles
-Bundle 'kien/ctrlp.vim'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'git://github.com/jcf/vim-latex.git'
-Bundle 'vim-scripts/a.vim'
-Bundle 'ervandew/supertab'
-Bundle 'majutsushi/tagbar'
-Bundle 'vim-pandoc/vim-pandoc'
-Bundle 'tomtom/tcomment_vim'
-
-set nocompatible
+se nocompatible
 set mouse=a
 set backspace=indent,eol,start
 set gcr=a:blinkon0
@@ -60,14 +41,12 @@ if has("gui_running")
 	if has("mac")
 		"set noantialias
 		set number
-		set guifont=AnonymousPro:h16
+		"set guifont=AnonymousPro:h16
         "set guifont=Menlo:h14
-		"set guifont=InconsolataLGC:h14
 		"set guifont=Monaco:h14
 		"set guifont=PragmataPro:h16
         "set guifont=SourceCodePro-Regular:h16
         "set guifont=CourierNewPSMT:h16
-        "set guifont=mplus-1m-regular:h16
 		set printfont=h11 ""Print Font
 		set linespace=4
 		set guioptions-=r
@@ -76,17 +55,14 @@ if has("gui_running")
 		set guioptions-=L
 		set lines=36
 		set columns=100
-		"set transparency=5
 		"set background=dark
 		"colorscheme iceberg
 		"colorscheme mac_classic
 		"colorscheme zenburn
         "let moria_monochrome = 1
 		"colorscheme moria
-		"colorscheme solarized
 		"colorscheme birds_of_paradise
 		colorscheme monocolor
-	    "colorscheme SUNIXcolor
 		map <D-1> :set co=90<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
 		map <D-2> :set co=120<CR>
@@ -98,9 +74,7 @@ else
 	set guioptions-=e
 	set t_Co=256
 	set number
-	"set background=dark
-    "let g:solarized_termcolors=256    
-	"colorscheme solarized
+	set background=dark
 	"colorscheme moria256
 	"colorscheme xoria256-pluk
 	colorscheme monocolor
@@ -168,35 +142,13 @@ endif
 nnoremap <C-a> :A<CR>
 
 ""tocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+""autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "map <silent> <C-n> :NERDTreeToggle<CR> 
-let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
-set modifiable
+"let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
+"set modifiable
 
 map <silent> <C-n> :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_gui_startup=0
-
-"" tagbar
-nmap <C-g> :TagbarToggle<CR>
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_ViewRule_pdf = 'open -a Preview.app' 
-let Tex_FoldedSections=""
-let Tex_FoldedEnvironments=""
-let Tex_FoldedMisc=""
-let g:Imap_UsePlaceHolders = 0
-" Delete .aux .log ... files when .tex file is being quit
-autocmd BufWinLeave *.tex !latexmk -c &
-map <Leader>c :!latexmk -c &<CR> 
-autocmd BufNewFile,BufRead *.tex setlocal spell
-let g:tex_comment_nospell= 1
-"" Forward search support for Skim.app
-map ,r :w<CR>:silent !/Applications/Skim.app/Contents/SharedSupport/displayline <C-r>=line('.')<CR> %<.pdf %<CR>
 
 " CtrlP
 let g:ctrlp_map = '<leader>.'
@@ -205,19 +157,6 @@ set wildignore+=*/Movies/*,*Pictures/*,*/Music/*,*/Library/*,*/tmp/*,*.so,*.o,*.
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.rvm$'
 let g:ctrlp_max_height=15
 
-" Vim-pandoc
-set nojoinspaces
-let g:pandoc_no_folding = 1
-map <Leader>p :PandocPdf<CR>
-map <Leader>o :PandocPdfOpen<CR>
-
 " TComment
 let g:tcommentOptions = {'whitespace' : 'no'}
 map <silent> <Leader>c :TComment<CR>
-
-" YouCompleteMe
-let g:ycm_key_invoke_completion = '<TAB>'
-let g:ycm_complete_in_strings = 1
-let g:ycm_complete_in_comments = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
