@@ -16,7 +16,6 @@ Bundle 'git://github.com/jcf/vim-latex.git'
 Bundle 'vim-scripts/a.vim'
 Bundle 'ervandew/supertab'
 Bundle 'majutsushi/tagbar'
-Bundle 'vim-pandoc/vim-pandoc'
 Bundle 'tomtom/tcomment_vim'
 
 set nocompatible
