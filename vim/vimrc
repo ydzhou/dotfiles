@@ -160,6 +160,8 @@ if !filereadable(expand("%:p:h")."/Makefile")
 	autocmd	BufEnter,BufCreate *.cpp setlocal makeprg=g++\ -Wall\ -o\ %<\ %
 	autocmd BufEnter,BufCreate *.c setlocal makeprg=gcc\ -Wall\ -o\ %<\ %
 endif
+
+let fortran_free_source=1
 """"""""""""""""""""""""""
 "" PLUGINS
 
