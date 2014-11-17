@@ -68,7 +68,7 @@ if has("gui_running")
         "set guifont=CourierNewPSMT:h16
         "set guifont=mplus-1m-regular:h16
 		set printfont=h11 ""Print Font
-		set linespace=4
+		set linespace=5
 		set guioptions-=r
 		set guioptions-=T
 		set guioptions-=e
@@ -78,13 +78,13 @@ if has("gui_running")
 		"set transparency=5
 		"set background=dark
 		"colorscheme iceberg
-		"colorscheme mac_classic
+		colorscheme mac_classic
 		"colorscheme zenburn
         "let moria_monochrome = 1
 		"colorscheme moria
 		"colorscheme solarized
 		"colorscheme birds_of_paradise
-		colorscheme monocolor
+		"colorscheme monocolor
 	    "colorscheme SUNIXcolor
 		map <D-1> :set co=90<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
