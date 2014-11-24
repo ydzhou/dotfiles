@@ -59,10 +59,9 @@ if has("gui_running")
 	if has("mac")
 		"set noantialias
 		set number
-		set guifont=AnonymousPro:h16
-        "set guifont=Menlo:h14
+		"set guifont=AnonymousPro:h16
+        set guifont=Menlo:h14
 		"set guifont=InconsolataLGC:h14
-		"set guifont=Monaco:h14
 		"set guifont=PragmataPro:h16
         "set guifont=SourceCodePro-Regular:h16
         "set guifont=CourierNewPSMT:h16
@@ -79,12 +78,12 @@ if has("gui_running")
 		"set background=dark
 		"colorscheme iceberg
 		"colorscheme mac_classic
-		"colorscheme zenburn
+		colorscheme zenburn
         "let moria_monochrome = 1
 		"colorscheme moria
 		"colorscheme solarized
 		"colorscheme birds_of_paradise
-		colorscheme monocolor
+		"colorscheme monocolor
 	    "colorscheme SUNIXcolor
 		map <D-1> :set co=90<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
