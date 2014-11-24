@@ -96,9 +96,6 @@ if has("gui_running")
         autocmd InsertEnter,InsertLeave * set cul!
 	endif
 else
-        autocmd InsertEnter,InsertLeave * set cul!
-	endif
-else
 	set guioptions-=e
 	set t_Co=256
 	set number
