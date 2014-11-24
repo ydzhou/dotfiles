@@ -42,13 +42,15 @@ set hlsearch
 set clipboard+=unnamed
 
 ""Folding
-set nofoldenable
-"set foldmethod=indent
-"set foldlevel=0
-"set foldnestmax=1
-"set foldcolumn=4
-"autocmd BufEnter,BufCreate *.h,*.c,*cpp setlocal foldmethod=syntax
-"noremap <space> za
+"set nofoldenable
+set foldlevelstart=20
+autocmd Filetype c,cpp,java,python,fortran setlocal foldcolumn=2
+autocmd Filetype c,cpp,java,python,fortran setlocal foldnestmax=2
+"set foldlevelstart=20
+"set foldnestmax=3
+"set foldcolumn=3
+autocmd Filetype c,cpp,java,python,fortran setlocal foldmethod=syntax
+noremap <space> za
 
 ""set ruler
 set laststatus=2
@@ -87,11 +89,14 @@ if has("gui_running")
 		"colorscheme birds_of_paradise
 		"colorscheme monocolor
 	    "colorscheme SUNIXcolor
-		map <D-1> :set co=90<CR> 
+		map <D-1> :set co=100<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
 		map <D-2> :set co=120<CR>
 		map <D-3> :set co=150<CR>
-		map <D-d> :maca toggleFileBrowser:<CR>
+		map <D-4> :set co=180<CR>
+        autocmd InsertEnter,InsertLeave * set cul!
+	endif
+else
         autocmd InsertEnter,InsertLeave * set cul!
 	endif
 else
@@ -163,6 +168,9 @@ if !filereadable(expand("%:p:h")."/Makefile")
 endif
 
 let fortran_free_source=1
+let fortran_fold=1
+"let fortran_more_precise=1
+
 """"""""""""""""""""""""""
 "" PLUGINS
 
