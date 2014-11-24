@@ -42,13 +42,15 @@ set hlsearch
 set clipboard+=unnamed
 
 ""Folding
-set nofoldenable
-"set foldmethod=indent
-"set foldlevel=0
-"set foldnestmax=1
-"set foldcolumn=4
-"autocmd BufEnter,BufCreate *.h,*.c,*cpp setlocal foldmethod=syntax
-"noremap <space> za
+"set nofoldenable
+set foldlevelstart=20
+autocmd Filetype c,cpp,java,python,fortran setlocal foldcolumn=2
+autocmd Filetype c,cpp,java,python,fortran setlocal foldnestmax=2
+"set foldlevelstart=20
+"set foldnestmax=3
+"set foldcolumn=3
+autocmd Filetype c,cpp,java,python,fortran setlocal foldmethod=syntax
+noremap <space> za
 
 ""set ruler
 set laststatus=2
@@ -67,7 +69,7 @@ if has("gui_running")
         "set guifont=CourierNewPSMT:h16
         "set guifont=mplus-1m-regular:h16
 		set printfont=h11 ""Print Font
-		set linespace=4
+		set linespace=5
 		set guioptions-=r
 		set guioptions-=T
 		set guioptions-=e
@@ -81,15 +83,19 @@ if has("gui_running")
 		colorscheme zenburn
         "let moria_monochrome = 1
 		"colorscheme moria
+		colorscheme molokai
 		"colorscheme solarized
 		"colorscheme birds_of_paradise
 		"colorscheme monocolor
 	    "colorscheme SUNIXcolor
-		map <D-1> :set co=90<CR> 
+		map <D-1> :set co=100<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
 		map <D-2> :set co=120<CR>
 		map <D-3> :set co=150<CR>
-		map <D-d> :maca toggleFileBrowser:<CR>
+		map <D-4> :set co=180<CR>
+        autocmd InsertEnter,InsertLeave * set cul!
+	endif
+else
         autocmd InsertEnter,InsertLeave * set cul!
 	endif
 else
@@ -161,6 +167,9 @@ if !filereadable(expand("%:p:h")."/Makefile")
 endif
 
 let fortran_free_source=1
+let fortran_fold=1
+"let fortran_more_precise=1
+
 """"""""""""""""""""""""""
 "" PLUGINS
 
@@ -178,6 +187,9 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 
 "" tagbar
 nmap <C-g> :TagbarToggle<CR>
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
+let g:tagbar_indent = 2
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
