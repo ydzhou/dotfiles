@@ -78,10 +78,11 @@ if has("gui_running")
 		"set transparency=5
 		"set background=dark
 		"colorscheme iceberg
-		colorscheme mac_classic
+		"colorscheme mac_classic
 		"colorscheme zenburn
         "let moria_monochrome = 1
 		"colorscheme moria
+		colorscheme molokai
 		"colorscheme solarized
 		"colorscheme birds_of_paradise
 		"colorscheme monocolor
@@ -179,6 +180,9 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 
 "" tagbar
 nmap <C-g> :TagbarToggle<CR>
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
+let g:tagbar_indent = 2
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
