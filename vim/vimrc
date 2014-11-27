@@ -64,7 +64,6 @@ if has("gui_running")
 		"set guifont=AnonymousPro:h16
         set guifont=Menlo:h14
 		"set guifont=InconsolataLGC:h14
-		"set guifont=Monaco:h14
 		"set guifont=PragmataPro:h16
         "set guifont=SourceCodePro-Regular:h16
         "set guifont=CourierNewPSMT:h16
@@ -81,7 +80,7 @@ if has("gui_running")
 		"set background=dark
 		"colorscheme iceberg
 		"colorscheme mac_classic
-		"colorscheme zenburn
+		colorscheme zenburn
         "let moria_monochrome = 1
 		"colorscheme moria
 		colorscheme molokai
