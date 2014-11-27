@@ -3,7 +3,7 @@ autocmd! bufwritepost .vimrc source %
 " Vundle
 filetype off
 set rtp+=~/.vim/
-call vundle#rc()
+call vundle#begin('~/.vim/bundle')
 
 Bundle 'gmarik/vundle'
 
@@ -17,6 +17,9 @@ Bundle 'vim-scripts/a.vim'
 Bundle 'ervandew/supertab'
 Bundle 'majutsushi/tagbar'
 Bundle 'tomtom/tcomment_vim'
+
+call vundle#end()
+filetype plugin indent on
 
 set nocompatible
 set mouse=a
