@@ -2,7 +2,7 @@ autocmd! bufwritepost .vimrc source %
 
 " Vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -97,9 +97,6 @@ if has("gui_running")
         autocmd InsertEnter,InsertLeave * set cul!
 	endif
 else
-        autocmd InsertEnter,InsertLeave * set cul!
-	endif
-else
 	set guioptions-=e
 	set t_Co=256
 	set number
@@ -166,6 +163,8 @@ if !filereadable(expand("%:p:h")."/Makefile")
 	autocmd	BufEnter,BufCreate *.cpp setlocal makeprg=g++\ -Wall\ -o\ %<\ %
 	autocmd BufEnter,BufCreate *.c setlocal makeprg=gcc\ -Wall\ -o\ %<\ %
 endif
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 let fortran_free_source=1
 let fortran_fold=1
