@@ -2,10 +2,10 @@ autocmd! bufwritepost .vimrc source %
 
 " Vundle
 filetype off
-set rtp+=~/.vim/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle')
 
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 
 " Bundles
 Bundle 'kien/ctrlp.vim'
