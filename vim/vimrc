@@ -81,16 +81,14 @@ if has("gui_running")
 		set columns=100
 		"set transparency=5
 		"set background=dark
-		"colorscheme iceberg
+		colorscheme corporation
 		"colorscheme mac_classic
-		colorscheme zenburn
+		"colorscheme zenburn
         "let moria_monochrome = 1
 		"colorscheme moria
-		colorscheme molokai
-		"colorscheme solarized
+		"colorscheme molokai
 		"colorscheme birds_of_paradise
 		"colorscheme monocolor
-	    "colorscheme SUNIXcolor
 		map <D-1> :set co=100<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
 		map <D-2> :set co=120<CR>
@@ -178,22 +176,13 @@ let fortran_fold=1
 "" A.vim switch between header and source file
 nnoremap <C-a> :A<CR>
 
-""tocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"map <silent> <C-n> :NERDTreeToggle<CR> 
-let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
-set modifiable
-
-map <silent> <C-n> :NERDTreeTabsToggle<CR>
-let g:nerdtree_tabs_open_on_gui_startup=0
-
 "" tagbar
 nmap <C-g> :TagbarToggle<CR>
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 let g:tagbar_indent = 2
 
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
@@ -230,8 +219,17 @@ let g:tcommentOptions = {'whitespace' : 'no'}
 map <silent> <Leader>c :TComment<CR>
 
 " YouCompleteMe
-let g:ycm_key_invoke_completion = '<TAB>'
-let g:ycm_complete_in_strings = 1
-let g:ycm_complete_in_comments = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_key_invoke_completion = '<TAB>'
+"let g:ycm_complete_in_strings = 1
+"let g:ycm_complete_in_comments = 0
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" NerdTree
+""tocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"map <silent> <C-n> :NERDTreeToggle<CR> 
+let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
+
+map <silent> <C-n> :NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_open_on_gui_startup=0
