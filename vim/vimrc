@@ -55,7 +55,7 @@ autocmd Filetype c,cpp,java,python,fortran setlocal foldnestmax=2
 autocmd Filetype c,cpp,java,python,fortran setlocal foldmethod=syntax
 noremap <space> za
 
-""set ruler
+"set ruler
 set laststatus=2
 set statusline=[%03l,%03v][%p%%]\ %=%F%m%r%h%w%<\ [%{&ff}:%{&fenc!=''?&fenc:&enc}]\ [%Y]
 
