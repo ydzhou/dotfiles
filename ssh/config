@@ -21,3 +21,7 @@ Host codesign
 Host eos
 	HostName eos.tamu.edu
 	User zhouyd
+
+Host ada
+	HostName ada.tamu.edu
+	User zhouyd
