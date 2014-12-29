@@ -80,8 +80,8 @@ if has("gui_running")
 		set lines=36
 		set columns=100
 		"set transparency=5
-		"set background=dark
-		colorscheme corporation
+		set background=dark
+		"colorscheme corporation
 		"colorscheme mac_classic
 		"colorscheme zenburn
         "let moria_monochrome = 1
@@ -89,6 +89,7 @@ if has("gui_running")
 		"colorscheme molokai
 		"colorscheme birds_of_paradise
 		"colorscheme monocolor
+		colorscheme nocolor
 		map <D-1> :set co=100<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
 		map <D-2> :set co=120<CR>
