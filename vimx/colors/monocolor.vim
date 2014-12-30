@@ -17,6 +17,8 @@ highlight CursorLine 	guibg=#474747 ctermbg=236
 highlight Error		guifg=#909090	guibg=#000000 ctermfg=8 ctermbg=white
 highlight Visual	guifg=#FFFFFF	guibg=grey ctermfg=white ctermbg=grey
 highlight LineNr guifg=#808080 ctermfg=8
+highlight Folded guifg=#000000 ctermfg=black
+highlight Pmenu  guifg=#FFFFFF guibg=#474747 ctermfg=white ctermbg=236
 
 " Syntax:
 highlight Normal guibg=#262626 guifg=#DADADA ctermbg=black ctermfg=253
@@ -36,6 +38,8 @@ highlight CursorLine 	guibg=#cccccc ctermbg=251
 highlight Error		guifg=#808080	guibg=#000000 ctermfg=grey ctermbg=black
 highlight Visual	guifg=#000000	guibg=grey ctermfg=black ctermbg=grey
 highlight LineNr guifg=#808080 ctermfg=grey
+highlight Folded guifg=#000000 ctermfg=black
+highlight Pmenu  guifg=#000000 guibg=#cccccc ctermfg=black ctermbg=251
 
 " Syntax:
 highlight Normal guifg=#000000 ctermfg=black

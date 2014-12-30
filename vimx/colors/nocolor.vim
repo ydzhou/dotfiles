@@ -21,13 +21,13 @@ highlight Folded guifg=#000000 ctermfg=black
 highlight Pmenu  guifg=#FFFFFF guibg=#474747 ctermfg=white ctermbg=236
 
 " Syntax:
-highlight Normal guibg=#262626 guifg=#DADADA ctermbg=black ctermfg=253
-highlight Constant 	guifg=#CCCCCC gui=bold ctermfg=252 cterm=bold
-highlight Identifier	guifg=#FFFFFF gui=bold ctermfg=white cterm=bold
-highlight PreProc 	guifg=#FFFFFF	gui=bold ctermfg=white cterm=bold
-highlight Special	guifg=#FFFFFF	gui=bold ctermfg=white cterm=bold
-highlight Statement	guifg=#FFFFFF	gui=bold,underline ctermfg=white cterm=bold
-highlight Type 		guifg=#FFFFFF	gui=bold ctermfg=white cterm=bold
+highlight Normal guibg=#000000 guifg=#FFFFFF ctermbg=black ctermfg=white
+highlight Constant 	guifg=#FFFFFF gui=none ctermfg=white cterm=none
+highlight Identifier	guifg=#FFFFFF gui=none ctermfg=white cterm=none
+highlight PreProc 	guifg=#FFFFFF gui=none	ctermfg=white cterm=none
+highlight Special	guifg=#FFFFFF gui=none	ctermfg=white cterm=none
+highlight Statement	guifg=#FFFFFF gui=none	ctermfg=white cterm=none
+highlight Type 		guifg=#FFFFFF gui=none	ctermfg=white cterm=none
 
 else
 
@@ -43,12 +43,12 @@ highlight Pmenu  guifg=#000000 guibg=#cccccc ctermfg=black ctermbg=251
 
 " Syntax:
 highlight Normal guifg=#000000 ctermfg=black
-highlight Constant 	guifg=#808080 gui=bold ctermfg=242 cterm=bold
-highlight Identifier	guifg=#000000 gui=bold ctermfg=black cterm=bold
-highlight PreProc 	guifg=#000000	gui=bold ctermfg=black cterm=bold
-highlight Special	guifg=#000000	gui=bold ctermfg=black cterm=bold
-highlight Statement	guifg=#000000	gui=bold,underline ctermfg=black cterm=bold
-highlight Type 		guifg=#000000	gui=bold ctermfg=black cterm=bold
+highlight Constant 	guifg=#000000 gui=none ctermfg=black cterm=none
+highlight Identifier	guifg=#000000 gui=none ctermfg=black cterm=none
+highlight PreProc 	guifg=#000000 gui=none	ctermfg=black cterm=none
+highlight Special	guifg=#000000 gui=none	ctermfg=black cterm=none
+highlight Statement	guifg=#000000 gui=none	ctermfg=black cterm=none
+highlight Type 		guifg=#000000 gui=none	ctermfg=black cterm=none
 
 endif
 
@@ -70,12 +70,12 @@ highlight! link Exception	Statement
 highlight! link Float		Constant
 highlight! link FoldColumn	Folded
 highlight! link Function	Identifier
-"highlight! link Function	Identifier
+highlight! link Function	Identifier
 highlight! link Ignore		Comment
 highlight! link Include		PreProc
 highlight! link IncSearch	Search
 highlight! link Keyword		Identifier
-"highlight! link Keyword		Identifier
+highlight! link Keyword		Identifier
 highlight! link Label		Statement
 highlight! link LineNr		LineNr
 highlight! link MatchParen	Statement

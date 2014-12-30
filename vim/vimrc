@@ -78,9 +78,9 @@ if has("gui_running")
 		set guioptions-=e
 		set guioptions-=L
 		set lines=36
-		set columns=100
+		set columns=120
 		"set transparency=5
-		set background=dark
+		"set background=dark
 		"colorscheme corporation
 		"colorscheme mac_classic
 		"colorscheme zenburn
@@ -88,8 +88,8 @@ if has("gui_running")
 		"colorscheme moria
 		"colorscheme molokai
 		"colorscheme birds_of_paradise
-		"colorscheme monocolor
-		colorscheme nocolor
+		colorscheme monocolor
+		"colorscheme nocolor
 		map <D-1> :set co=100<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
 		map <D-2> :set co=120<CR>
