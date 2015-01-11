@@ -9,7 +9,7 @@ Bundle 'gmarik/Vundle.vim'
 
 " Bundles
 Bundle 'kien/ctrlp.vim'
-Bundle 'jiangmiao/auto-pairs'
+"Bundle 'jiangmiao/auto-pairs'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'git://github.com/jcf/vim-latex.git'
@@ -72,12 +72,12 @@ if has("gui_running")
         "set guifont=CourierNewPSMT:h16
         "set guifont=mplus-1m-regular:h16
 		set printfont=h11 ""Print Font
-		set linespace=5
+		set linespace=4
 		set guioptions-=r
 		set guioptions-=T
 		set guioptions-=e
 		set guioptions-=L
-		set lines=36
+		set lines=40
 		set columns=120
 		"set transparency=5
 		"set background=dark
@@ -136,8 +136,6 @@ vnoremap <Down> gj
 vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
-"" map sort function to a key
-vnoremap <Leader>s :sort<CR>
 "" easier moving of code block
 vnoremap < <gv
 vnoremap > >gv
@@ -166,6 +164,8 @@ if !filereadable(expand("%:p:h")."/Makefile")
 endif
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+autocmd Filetype ruby setlocal re=1
 
 let fortran_free_source=1
 let fortran_fold=1
