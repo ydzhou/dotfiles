@@ -9,7 +9,7 @@ Bundle 'gmarik/Vundle.vim'
 
 " Bundles
 Bundle 'kien/ctrlp.vim'
-"Bundle 'jiangmiao/auto-pairs'
+Bundle 'jiangmiao/auto-pairs'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'git://github.com/jcf/vim-latex.git'
