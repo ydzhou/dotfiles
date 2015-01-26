@@ -11,9 +11,14 @@ compinit
 # End of lines added by compinstall
 #autoload colors && colors
 
+autoload -U promptinit && promptinit
+setopt promptsubst
 #RPROMPT=$(echo "%{$fg[gray]%}%D %T %m$FINISH%{$reset_color%}")
-RPROMPT=$(echo "%{$fg[gray]%}%m$FINISH%{$reset_color%}")
-PROMPT=$(echo "[%n %{$fg[blue]%}%B%1~%b%{$reset_color%}]$ $FINISH")
+#RPROMPT=$(echo "%{$fg[gray]%}%m$FINISH%{$reset_color%}")
+#PROMPT=$(echo "[%n %{$fg[blue]%}%B%1~%b%{$reset_color%}]$ $FINISH")
+#RPROMPT=$(echo "%{$fg[gray]%}%m$FINISH%{$reset_color%}")
+PROMPT="%B%n @ %m • %b%D%B • %~
+>>>> %b"
 
 alias matlab="/opt/MATLAB/R2012a/bin/matlab -nojvm"
 alias mysql=/usr/local/mysql/bin/mysql
