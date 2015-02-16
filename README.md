@@ -3,19 +3,18 @@ dotfile
 
 Configure Files for vim, zsh and etc.
 
-## Vim Plugin
+## Vim Plugins
 
 * Vundle
-* auto-pairs
-* supertab
-* vim-latex
+* Auto Pairs
+* Supertab
+* Vim Latex
 * YouCompleteMe
 * CtrlP
-* tagbar
-* vim-nerdtree-tab
-* nerdtree
-* a
-* tcomment
+* Tagbar
+* NerdTree and vim-nerdtree-tab
+* A
+* Tcomment
 
 To install vundle:
 
