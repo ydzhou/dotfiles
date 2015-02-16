@@ -3,7 +3,7 @@ dotfile
 
 Configure Files for vim, zsh and etc.
 
-** Vim Plugin
+## Vim Plugin
 
 * Vundle
 * auto-pairs
