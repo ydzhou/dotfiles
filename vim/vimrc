@@ -14,10 +14,10 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'git://github.com/jcf/vim-latex.git'
 Bundle 'vim-scripts/a.vim'
-"Bundle 'ervandew/supertab'
+Bundle 'ervandew/supertab'
 Bundle 'majutsushi/tagbar'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
@@ -221,10 +221,10 @@ let g:tcommentOptions = {'whitespace' : 'no'}
 map <silent> <Leader>c :TComment<CR>
 
 " YouCompleteMe
-let g:ycm_key_invoke_completion = '<TAB>'
-let g:ycm_complete_in_strings = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_min_num_of_chars_for_completion = 2
+"let g:ycm_key_invoke_completion = '<TAB>'
+"let g:ycm_complete_in_strings = 1
+"let g:ycm_complete_in_comments = 1
+"let g:ycm_min_num_of_chars_for_completion = 2
 "let g:ycm_autoclose_preview_window_after_completion = 1
 "let g:ycm_autoclose_preview_window_after_insertion = 1
 
