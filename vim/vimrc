@@ -83,14 +83,13 @@ if has("gui_running")
 		"set transparency=5
 		"set background=dark
 		"colorscheme corporation
-		"colorscheme mac_classic
+		colorscheme mac_classic
 		"colorscheme zenburn
         "let moria_monochrome = 1
 		"colorscheme moria
 		"colorscheme molokai
 		"colorscheme birds_of_paradise
-		colorscheme monocolor
-		"colorscheme nocolor
+		"colorscheme monocolor
 		map <D-1> :set co=100<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
 		map <D-2> :set co=120<CR>
@@ -102,7 +101,7 @@ else
 	set guioptions-=e
 	set t_Co=256
 	set number
-	"set background=dark
+	set background=dark
     "let g:solarized_termcolors=256    
 	"colorscheme solarized
 	"colorscheme moria256
