@@ -142,10 +142,10 @@ endif
 nnoremap <C-a> :A<CR>
 
 ""tocmd vimenter * NERDTree
-""autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "map <silent> <C-n> :NERDTreeToggle<CR> 
-"let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
-"set modifiable
+let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
+let g:NERDTreeMouseMode=3
 
 map <silent> <C-n> :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_gui_startup=0
