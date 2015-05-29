@@ -17,8 +17,7 @@ setopt promptsubst
 #RPROMPT=$(echo "%{$fg[gray]%}%m$FINISH%{$reset_color%}")
 #PROMPT=$(echo "[%n %{$fg[blue]%}%B%1~%b%{$reset_color%}]$ $FINISH")
 #RPROMPT=$(echo "%{$fg[gray]%}%m$FINISH%{$reset_color%}")
-PROMPT="%B%n @ %m • %b%D%B • %~
-> %b"
+PROMPT="%B%n @ %m • %b%D%B • %~ > %b"
 
 alias matlab="/opt/MATLAB/R2012a/bin/matlab -nojvm"
 alias mysql=/usr/local/mysql/bin/mysql

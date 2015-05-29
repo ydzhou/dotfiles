@@ -60,6 +60,10 @@ noremap <space> za
 set laststatus=2
 set statusline=[%03l,%03v][%p%%]\ %=%F%m%r%h%w%<\ [%{&ff}:%{&fenc!=''?&fenc:&enc}]\ [%Y]
 
+"show hidden characters
+"set listchars=eol:$,tab:>-,trail:~
+"set list
+
 syntax on
 if has("gui_running")
 	if has("mac")
@@ -81,15 +85,15 @@ if has("gui_running")
 		set lines=40
 		set columns=120
 		"set transparency=5
-		set background=dark
-		"colorscheme corporation
+		"set background=dark
+		colorscheme corporation
 		"colorscheme mac_classic
 		"colorscheme zenburn
         "let moria_monochrome = 1
 		"colorscheme moria
 		"colorscheme molokai
 		"colorscheme birds_of_paradise
-		colorscheme monocolor
+		"colorscheme monocolor
 		map <D-1> :set co=100<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
 		map <D-2> :set co=120<CR>
@@ -232,7 +236,7 @@ map <silent> <Leader>c :TComment<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "map <silent> <C-n> :NERDTreeToggle<CR> 
 let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
-let g:NERDTreeMouseMode=3
+"let g:NERDTreeMouseMode=3
 
 map <silent> <C-n> :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_gui_startup=0
