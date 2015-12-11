@@ -9,7 +9,6 @@ Configure Files for vim, zsh and etc.
 * Auto Pairs
 * Supertab
 * Vim Latex
-* YouCompleteMe
 * CtrlP
 * Tagbar
 * NerdTree and vim-nerdtree-tab
@@ -18,4 +17,4 @@ Configure Files for vim, zsh and etc.
 
 To install vundle:
 
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
