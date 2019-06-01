@@ -11,11 +11,15 @@ Plug 'aming/vim-mason'
 
 call plug#end()
 
+set mouse=a
+
+set autoread
+
 " UI SETTING
 syntax on
 set background=light
 color monocolor
-autocmd InsertEnter,InsertLeave * set cul!
+" autocmd InsertEnter,InsertLeave * set cul!
 
 filetype plugin indent on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
@@ -72,6 +76,9 @@ let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
 "let g:NERDTreeMouseMode=3
 let g:NERDTreeDirArrowExpandable = '↠'
 let g:NERDTreeDirArrowCollapsible = '↡'
-
 map <silent> <C-n> :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_gui_startup=0
+
+" TComment
+"let g:tcommentOptions = {'whitespace' : 'no'}
+map <silent> <Leader>c :TComment<CR>
