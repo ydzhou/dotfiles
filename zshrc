@@ -8,8 +8,6 @@ zstyle :compinstall filename '/home/yudi/.zshrc'
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-#autoload colors && colors
 
 autoload -U promptinit && promptinit
 setopt promptsubst
@@ -19,17 +17,10 @@ setopt promptsubst
 #RPROMPT=$(echo "%{$fg[gray]%}%m$FINISH%{$reset_color%}")
 PROMPT="%B%n @ %m • %b%D%B • %~ > %b"
 
-alias matlab="/opt/MATLAB/R2012a/bin/matlab -nojvm"
-alias mysql=/usr/local/mysql/bin/mysql
-alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 alias ls="ls -F"
 alias tk="tmux kill-server"
 alias tl="tmux ls"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
-alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-
-alias aria2start="aria2c --enable-rpc --rpc-listen-all"
+alias vim="/usr/local/Cellar/vim/8.1.1400_2/bin/vim"

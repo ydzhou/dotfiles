@@ -1,25 +1,19 @@
 autocmd! bufwritepost .vimrc source %
 
-" Vundle
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin('~/.vim/bundle')
-
-Bundle 'VundleVim/Vundle.vim'
-
+call plug#begin()
 " Bundles
-Bundle 'kien/ctrlp.vim'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'git://github.com/jcf/vim-latex.git'
-Bundle 'vim-scripts/a.vim'
-Bundle 'ervandew/supertab'
-Bundle 'majutsushi/tagbar'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'aming/vim-mason'
+Plug 'kien/ctrlp.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'git://github.com/jcf/vim-latex.git'
+Plug 'vim-scripts/a.vim'
+Plug 'ervandew/supertab'
+Plug 'majutsushi/tagbar'
+Plug 'tomtom/tcomment_vim'
+Plug 'aming/vim-mason'
+call plug#end()
 
-call vundle#end()
 filetype plugin indent on
 
 set nocompatible
@@ -70,7 +64,7 @@ if has("gui_running")
 		"set noantialias
 		set number
 		"set guifont=AnonymousProMinus:h16
-        set guifont=Menlo:h14
+        set guifont=Menlo:h16
 		"set guifont=InconsolataLGC:h14
 		"set guifont=PragmataPro:h16
         "set guifont=SourceCodePro-Regular:h16
@@ -86,13 +80,13 @@ if has("gui_running")
 		set columns=120
 		"set transparency=5
 		"set background=dark
-		colorscheme corporation
+		"colorscheme corporation
 		"colorscheme mac_classic
 		"colorscheme zenburn
         "let moria_monochrome = 1
 		"colorscheme moria
 		"colorscheme molokai
-		"colorscheme birds_of_paradise
+		colorscheme birds_of_paradise
 		"colorscheme monocolor
 		map <D-1> :set co=100<CR> 
 		"map <D-2> :set co=120<CR>:winc =<CR> 
@@ -105,13 +99,13 @@ else
 	set guioptions-=e
 	set t_Co=256
 	set number
-	set background=dark
+	"set background=dark
     "let g:solarized_termcolors=256    
 	"colorscheme solarized
 	"colorscheme moria256
 	"colorscheme xoria256-pluk
-	colorscheme monocolor
-	"colorscheme mac_classic
+	"colorscheme monocolor
+	colorscheme mac_classic
 	"colorscheme vgod
     autocmd InsertEnter,InsertLeave * set cul!
 endif
@@ -220,16 +214,8 @@ map <Leader>p :PandocPdf<CR>
 map <Leader>o :PandocPdfOpen<CR>
 
 " TComment
-let g:tcommentOptions = {'whitespace' : 'no'}
+"let g:tcommentOptions = {'whitespace' : 'no'}
 map <silent> <Leader>c :TComment<CR>
-
-" YouCompleteMe
-"let g:ycm_key_invoke_completion = '<TAB>'
-"let g:ycm_complete_in_strings = 1
-"let g:ycm_complete_in_comments = 1
-"let g:ycm_min_num_of_chars_for_completion = 2
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " NerdTree
 ""tocmd vimenter * NERDTree
