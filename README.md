@@ -5,16 +5,10 @@ Configure Files for vim, zsh and etc.
 
 ## Vim Plugins
 
-* Vundle
-* Auto Pairs
-* Supertab
-* Vim Latex
-* CtrlP
-* Tagbar
-* NerdTree and vim-nerdtree-tab
-* A
-* Tcomment
+To install Plug:
 
-To install vundle:
+curl -fLo ~/dotfiles/vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+curl -fLo ~/dotfiles/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
