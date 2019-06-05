@@ -12,6 +12,9 @@ Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'tomtom/tcomment_vim'
 Plug 'aming/vim-mason'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'ydzhou/monocolor.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -64,13 +67,14 @@ if has("gui_running")
 		"set noantialias
 		set number
 		"set guifont=AnonymousProMinus:h16
-        set guifont=Menlo:h16
+        " set guifont=Menlo:h16
 		"set guifont=InconsolataLGC:h14
 		"set guifont=PragmataPro:h16
         "set guifont=SourceCodePro-Regular:h16
         "set guifont=CourierNewPSMT:h16
         "set guifont=mplus-1m-regular:h16
-		set printfont=h11 ""Print Font
+        set guifont=Hack-Regular:h16
+        set printfont=h11 ""Print Font
 		set linespace=4
 		set guioptions-=r
 		set guioptions-=T
@@ -79,34 +83,31 @@ if has("gui_running")
 		set lines=40
 		set columns=120
 		"set transparency=5
-		"set background=dark
+		" set background=light
 		"colorscheme corporation
 		"colorscheme mac_classic
 		"colorscheme zenburn
         "let moria_monochrome = 1
-		"colorscheme moria
+		" colorscheme moria
 		"colorscheme molokai
-		colorscheme birds_of_paradise
-		"colorscheme monocolor
-		map <D-1> :set co=100<CR> 
-		"map <D-2> :set co=120<CR>:winc =<CR> 
-		map <D-2> :set co=120<CR>
-		map <D-3> :set co=150<CR>
-		map <D-4> :set co=180<CR>
+		" colorscheme birds_of_paradise
+		colorscheme monocolor
+        " colorscheme neodark
+        let g:neodark#background ='#202020'
+        " let g:neodark#use_256color=1
         autocmd InsertEnter,InsertLeave * set cul!
 	endif
 else
 	set guioptions-=e
 	set t_Co=256
 	set number
-	"set background=dark
+	set background=dark
     "let g:solarized_termcolors=256    
 	"colorscheme solarized
 	"colorscheme moria256
 	"colorscheme xoria256-pluk
-	"colorscheme monocolor
-	colorscheme mac_classic
-	"colorscheme vgod
+	colorscheme monocolor
+	" colorscheme mac_classic
     autocmd InsertEnter,InsertLeave * set cul!
 endif
 

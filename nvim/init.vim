@@ -1,5 +1,4 @@
 call plug#begin()
-
 Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
@@ -8,7 +7,11 @@ Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'tomtom/tcomment_vim'
 Plug 'aming/vim-mason'
-
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 set mouse=a
@@ -17,8 +20,13 @@ set autoread
 
 " UI SETTING
 syntax on
-set background=light
-color monocolor
+
+color neodark
+" set background=light
+" color monocolor
+let g:neodark#background='#202020'
+let g:neodark#use_256color=1
+
 " autocmd InsertEnter,InsertLeave * set cul!
 
 filetype plugin indent on
