@@ -12,7 +12,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'joshdick/onedark.vim'
+" Plug 'neoclide/coc.nvim'
+Plug 'rakr/vim-one'
+Plug 'xianzhon/vim-code-runner'
 call plug#end()
+
+language zh_CN.UTF-8
 
 set mouse=a
 
@@ -21,13 +26,24 @@ set autoread
 " UI SETTING
 syntax on
 
-color neodark
-" set background=light
+color one
+set background=light
 " color monocolor
 let g:neodark#background='#202020'
 let g:neodark#use_256color=1
 
 " autocmd InsertEnter,InsertLeave * set cul!
+
+if exists('g:vv')
+    VVset windowheight=900
+    VVset windowwidth=1200
+    VVset fontsize=18
+    VVset fontfamily=Hack-Regular
+    set background=light
+    let g:one_allow_italics = 1
+
+    noremap <D-s> :w<CR>
+endif
 
 filetype plugin indent on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
@@ -90,3 +106,6 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " TComment
 "let g:tcommentOptions = {'whitespace' : 'no'}
 map <silent> <Leader>c :TComment<CR>
+
+" CodeRunner
+map <silent> <Leader>b <plug>CodeRunner

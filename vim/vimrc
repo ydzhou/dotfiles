@@ -15,6 +15,8 @@ Plug 'aming/vim-mason'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'ydzhou/monocolor.vim'
+Plug 'rakr/vim-one'
+Plug 'xianzhon/vim-code-runner'
 call plug#end()
 
 filetype plugin indent on
@@ -83,7 +85,7 @@ if has("gui_running")
 		set lines=40
 		set columns=120
 		"set transparency=5
-		" set background=light
+		set background=light
 		"colorscheme corporation
 		"colorscheme mac_classic
 		"colorscheme zenburn
@@ -91,8 +93,10 @@ if has("gui_running")
 		" colorscheme moria
 		"colorscheme molokai
 		" colorscheme birds_of_paradise
-		colorscheme monocolor
+		" colorscheme monocolor
         " colorscheme neodark
+        let g:one_allow_italics = 1
+        colorscheme one
         let g:neodark#background ='#202020'
         " let g:neodark#use_256color=1
         autocmd InsertEnter,InsertLeave * set cul!
@@ -227,3 +231,5 @@ let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
 
 map <silent> <C-n> :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_gui_startup=0
+
+nmap <silent><leader>b <plug>CodeRunner
