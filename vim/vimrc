@@ -7,16 +7,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'git://github.com/jcf/vim-latex.git'
-Plug 'vim-scripts/a.vim'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'tomtom/tcomment_vim'
-Plug 'aming/vim-mason'
 Plug 'KeitaNakamura/neodark.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'ydzhou/monocolor.vim'
 Plug 'rakr/vim-one'
-Plug 'xianzhon/vim-code-runner'
 call plug#end()
 
 filetype plugin indent on
@@ -44,17 +40,6 @@ set ignorecase
 set hlsearch
 set clipboard+=unnamed
 
-""Folding
-"set nofoldenable
-set foldlevelstart=20
-autocmd Filetype c,cpp,java,python,fortran setlocal foldcolumn=2
-autocmd Filetype c,cpp,java,python,fortran setlocal foldnestmax=2
-"set foldlevelstart=20
-"set foldnestmax=3
-"set foldcolumn=3
-autocmd Filetype c,cpp,java,python,fortran setlocal foldmethod=syntax
-noremap <space> za
-
 "set ruler
 set laststatus=2
 set statusline=[%03l,%03v][%p%%]\ %=%F%m%r%h%w%<\ [%{&ff}:%{&fenc!=''?&fenc:&enc}]\ [%Y]
@@ -66,14 +51,9 @@ set statusline=[%03l,%03v][%p%%]\ %=%F%m%r%h%w%<\ [%{&ff}:%{&fenc!=''?&fenc:&enc
 syntax on
 if has("gui_running")
 	if has("mac")
-		"set noantialias
 		set number
 		"set guifont=AnonymousProMinus:h16
-        " set guifont=Menlo:h16
-		"set guifont=InconsolataLGC:h14
 		"set guifont=PragmataPro:h16
-        "set guifont=SourceCodePro-Regular:h16
-        "set guifont=CourierNewPSMT:h16
         "set guifont=mplus-1m-regular:h16
         set guifont=Hack-Regular:h16
         set printfont=h11 ""Print Font
@@ -86,32 +66,25 @@ if has("gui_running")
 		set columns=120
 		"set transparency=5
 		set background=light
-		"colorscheme corporation
 		"colorscheme mac_classic
-		"colorscheme zenburn
         "let moria_monochrome = 1
 		" colorscheme moria
-		"colorscheme molokai
 		" colorscheme birds_of_paradise
 		" colorscheme monocolor
         " colorscheme neodark
         let g:one_allow_italics = 1
         colorscheme one
         let g:neodark#background ='#202020'
-        " let g:neodark#use_256color=1
         autocmd InsertEnter,InsertLeave * set cul!
 	endif
 else
 	set guioptions-=e
 	set t_Co=256
 	set number
-	set background=dark
+	"set background=dark
     "let g:solarized_termcolors=256    
 	"colorscheme solarized
-	"colorscheme moria256
-	"colorscheme xoria256-pluk
 	colorscheme monocolor
-	" colorscheme mac_classic
     autocmd InsertEnter,InsertLeave * set cul!
 endif
 
@@ -170,10 +143,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 autocmd Filetype ruby setlocal re=1
 
-let fortran_free_source=1
-let fortran_fold=1
-"let fortran_more_precise=1
-
 """"""""""""""""""""""""""
 "" PLUGINS
 
@@ -212,12 +181,6 @@ set wildignore+=*/Movies/*,*Pictures/*,*/Music/*,*/Library/*,*/tmp/*,*.so,*.o,*.
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.rvm$'
 let g:ctrlp_max_height=15
 
-" Vim-pandoc
-set nojoinspaces
-let g:pandoc_no_folding = 1
-map <Leader>p :PandocPdf<CR>
-map <Leader>o :PandocPdfOpen<CR>
-
 " TComment
 "let g:tcommentOptions = {'whitespace' : 'no'}
 map <silent> <Leader>c :TComment<CR>
@@ -231,5 +194,3 @@ let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
 
 map <silent> <C-n> :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_gui_startup=0
-
-nmap <silent><leader>b <plug>CodeRunner

@@ -20,11 +20,3 @@ PROMPT="%B%n @ %m • %b%D%B • %~ > %b"
 alias ls="ls -F"
 alias tk="tmux kill-server"
 alias tl="tmux ls"
-
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-
-alias vim="/usr/local/Cellar/vim/8.1.1400_2/bin/vim"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
