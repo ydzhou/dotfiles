@@ -7,8 +7,7 @@ Configure Files for vim, zsh and etc.
 
 To install Plug:
 
+```
 curl -fLo ~/dotfiles/vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-curl -fLo ~/dotfiles/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
