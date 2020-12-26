@@ -44,46 +44,30 @@ set clipboard+=unnamed
 set laststatus=2
 set statusline=[%03l,%03v][%p%%]\ %=%F%m%r%h%w%<\ [%{&ff}:%{&fenc!=''?&fenc:&enc}]\ [%Y]
 
-"show hidden characters
-"set listchars=eol:$,tab:>-,trail:~
-"set list
-
 syntax on
 if has("gui_running")
-	if has("mac")
-		set number
-		"set guifont=AnonymousProMinus:h16
-		"set guifont=PragmataPro:h16
-        "set guifont=mplus-1m-regular:h16
-        set guifont=Hack-Regular:h16
-        set printfont=h11 ""Print Font
-		set linespace=4
-		set guioptions-=r
-		set guioptions-=T
-		set guioptions-=e
-		set guioptions-=L
-		set lines=40
-		set columns=120
-		"set transparency=5
-		set background=light
-		"colorscheme mac_classic
-        "let moria_monochrome = 1
-		" colorscheme moria
-		" colorscheme birds_of_paradise
-		" colorscheme monocolor
-        " colorscheme neodark
-        let g:one_allow_italics = 1
-        colorscheme one
-        let g:neodark#background ='#202020'
-        autocmd InsertEnter,InsertLeave * set cul!
-	endif
+	set number
+	" set guifont=AnonymousProMinus:h16
+    " set guifont=mplus-1m-regular:h16
+    " set guifont=Hack-Regular:h16
+	set linespace=4
+    set guioptions-=m
+	set guioptions-=r
+	set guioptions-=T
+	set guioptions-=e
+	set guioptions-=L
+	set lines=40
+	set columns=120
+	set background=light
+	" colorscheme monocolor
+    let g:one_allow_italics = 1
+    colorscheme one
+    autocmd InsertEnter,InsertLeave * set cul!
 else
 	set guioptions-=e
 	set t_Co=256
 	set number
-	"set background=dark
-    "let g:solarized_termcolors=256    
-	"colorscheme solarized
+	" set background=dark
 	colorscheme monocolor
     autocmd InsertEnter,InsertLeave * set cul!
 endif
