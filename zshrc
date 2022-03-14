@@ -18,7 +18,11 @@ setopt promptsubst
 PROMPT="%B%n @ %m • %b%D%B • %~ > %b"
 
 alias ls="ls -F"
-alias tk="tmux kill-server"
-alias tl="tmux ls"
 
 alias mvim="/Applications/MacVim.app/Contents/bin/mvim"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
