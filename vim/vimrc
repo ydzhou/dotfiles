@@ -14,6 +14,8 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
 Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/nerdfont.vim'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
@@ -41,7 +43,9 @@ syntax on
 if has("gui_running")
 	set number
 	" set guifont=AnonymousProMinus:h16
-    set guifont=Menlo-Regular:h16
+    " set guifont=Menlo-Regular:h16
+    " set guifont=IosevkaNerdFontComplete-:h15
+    set guifont=MesloLGMNerdFontComplete-Regular:h15
 	set linespace=4
     set guioptions-=m
 	set guioptions-=r
@@ -166,6 +170,7 @@ augroup FernGroup
   autocmd FileType fern call FernInit()
 augroup END
 
+let g:fern#renderer = "nerdfont"
 
 " TComment
 "let g:tcommentOptions = {'whitespace' : 'no'}
