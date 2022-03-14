@@ -28,6 +28,9 @@ set noeb vb t_vb=
 if has('autocmd')
 	autocmd GUIEnter * set visualbell t_vb=
 endif
+set encoding=UTF-8
+" Show completion candidates for vim commands
+set wildmenu
 
 set wrap lbr
 set display=lastline
@@ -86,6 +89,9 @@ vnoremap k gk
 "" easier moving of code block
 vnoremap < <gv
 vnoremap > >gv
+" Paste from 0 register to avoid cannot paste after deletion
+nnoremap p "0P
+xnoremap p "0P
 
 " Automatically open, but do not go to (if there are errors) the quickfix /
 " location list window, or close it when is has become empty.
@@ -116,7 +122,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " set wildignore+=*/Movies/*,*Pictures/*,*/Music/*,*/Library/*,*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
 " let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.rvm$'
 " let g:ctrlp_max_height=15
-" let g:ctrlp_by_filename = 1
 
 " FZF
 map <silent> <Leader>f :FZF<CR>
