@@ -2,20 +2,20 @@ autocmd! bufwritepost .vimrc source %
 
 call plug#begin()
 " Bundles
-Plug 'kien/ctrlp.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'git://github.com/jcf/vim-latex.git'
-Plug 'ervandew/supertab'
-Plug 'majutsushi/tagbar'
+" Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'tomtom/tcomment_vim'
-Plug 'KeitaNakamura/neodark.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'ydzhou/monocolor.vim'
-Plug 'rakr/vim-one'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
+Plug 'lambdalisue/fern.vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
-
-filetype plugin indent on
 
 set nocompatible
 set mouse=a
@@ -27,17 +27,10 @@ if has('autocmd')
 	autocmd GUIEnter * set visualbell t_vb=
 endif
 
-set wrap
-set lbr
+set wrap lbr
 set display=lastline
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set cindent
-set autoindent
-set ignorecase
-set hlsearch
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+set cindent autoindent
 set clipboard+=unnamed
 
 "set ruler
@@ -48,8 +41,7 @@ syntax on
 if has("gui_running")
 	set number
 	" set guifont=AnonymousProMinus:h16
-    " set guifont=mplus-1m-regular:h16
-    " set guifont=Hack-Regular:h16
+    set guifont=Menlo-Regular:h16
 	set linespace=4
     set guioptions-=m
 	set guioptions-=r
@@ -58,10 +50,9 @@ if has("gui_running")
 	set guioptions-=L
 	set lines=40
 	set columns=120
-	set background=light
+	" set background=dark
 	" colorscheme monocolor
-    let g:one_allow_italics = 1
-    colorscheme one
+	colorscheme gruvbox
     autocmd InsertEnter,InsertLeave * set cul!
 else
 	set guioptions-=e
@@ -69,13 +60,9 @@ else
 	set number
 	" set background=dark
 	colorscheme monocolor
-    autocmd InsertEnter,InsertLeave * set cul!
 endif
 
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
+set incsearch hlsearch ignorecase smartcase
 
 ""Backup
 set noswapfile
@@ -84,18 +71,14 @@ set backupdir=~/.vim/backup
 let mapleader=","
 map ; <C-d>
 map ' <C-u>
+map <silent> <Leader>, <C-o>
+map <silent> <Leader>. <C-i>
 "" standard keys for wrapped lines
 set whichwrap+=<,>,[,]
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
 "" easier moving of code block
 vnoremap < <gv
 vnoremap > >gv
@@ -118,63 +101,93 @@ filetype on
 filetype plugin on
 filetype indent on
 
-if !filereadable(expand("%:p:h")."/Makefile")
-	autocmd	BufEnter,BufCreate *.cpp setlocal makeprg=g++\ -Wall\ -o\ %<\ %
-	autocmd BufEnter,BufCreate *.c setlocal makeprg=gcc\ -Wall\ -o\ %<\ %
-endif
-
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-autocmd Filetype ruby setlocal re=1
 
 """"""""""""""""""""""""""
 "" PLUGINS
 
-"" A.vim switch between header and source file
-nnoremap <C-a> :A<CR>
-
-"" tagbar
-nmap <C-g> :TagbarToggle<CR>
-let g:tagbar_sort = 0
-let g:tagbar_compact = 1
-let g:tagbar_indent = 2
-
-" Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_ViewRule_pdf = 'open -a Preview.app' 
-let Tex_FoldedSections=""
-let Tex_FoldedEnvironments=""
-let Tex_FoldedMisc=""
-let g:Imap_UsePlaceHolders = 0
-" Delete .aux .log ... files when .tex file is being quit
-autocmd BufWinLeave *.tex !latexmk -c &
-map <Leader>c :!latexmk -c &<CR> 
-autocmd BufNewFile,BufRead *.tex setlocal spell
-let g:tex_comment_nospell= 1
-"" Forward search support for Skim.app
-map ,r :w<CR>:silent !/Applications/Skim.app/Contents/SharedSupport/displayline <C-r>=line('.')<CR> %<.pdf %<CR>
-
 " CtrlP
-let g:ctrlp_map = '<leader>.'
-let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/Movies/*,*Pictures/*,*/Music/*,*/Library/*,*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.rvm$'
-let g:ctrlp_max_height=15
+" let g:ctrlp_map = '<leader>/'
+" let g:ctrlp_working_path_mode = 'ra'
+" set wildignore+=*/Movies/*,*Pictures/*,*/Music/*,*/Library/*,*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
+" let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.rvm$'
+" let g:ctrlp_max_height=15
+" let g:ctrlp_by_filename = 1
+
+" FZF
+map <silent> <Leader>f :FZF<CR>
+
+" Fern
+map <silent> <C-n> :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
+
+" Disable netrw.
+let g:loaded_netrw  = 1
+let g:loaded_netrwPlugin = 1
+let g:loaded_netrwSettings = 1
+let g:loaded_netrwFileHandlers = 1
+
+augroup my-fern-hijack
+  autocmd!
+  autocmd BufEnter * ++nested call s:hijack_directory()
+augroup END
+
+function! s:hijack_directory() abort
+  let path = expand('%:p')
+  if !isdirectory(path)
+    return
+  endif
+  bwipeout %
+  execute printf('Fern %s', fnameescape(path))
+endfunction
+
+let g:fern#disable_default_mappings = 1
+function! FernInit() abort
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-open-expand-collapse)
+        \ fern#smart#leaf(
+        \   "\<Plug>(fern-action-open:select)",
+        \   "\<Plug>(fern-action-expand)",
+        \   "\<Plug>(fern-action-collapse)",
+        \ )
+  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> n <Plug>(fern-action-new-path)
+  nmap <buffer> d <Plug>(fern-action-remove)
+  nmap <buffer> m <Plug>(fern-action-move)
+  nmap <buffer> M <Plug>(fern-action-rename)
+  nmap <buffer> h <Plug>(fern-action-hidden-toggle)j
+  nmap <buffer> R <Plug>(fern-action-reload)
+  nmap <buffer> k <Plug>(fern-action-mark-toggle)j
+  nmap <buffer><nowait> < <Plug>(fern-action-leave)
+  nmap <buffer><nowait> > <Plug>(fern-action-enter)
+endfunction
+augroup FernGroup
+  autocmd!
+  autocmd FileType fern call FernInit()
+augroup END
+
 
 " TComment
 "let g:tcommentOptions = {'whitespace' : 'no'}
 map <silent> <Leader>c :TComment<CR>
 
-" NerdTree
-""tocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"map <silent> <C-n> :NERDTreeToggle<CR> 
-let NERDTreeIgnore=['\.$','\.pyc$','\.swp$','\~$']
-"let g:NERDTreeMouseMode=3
+" LSP
+map <silent> <Leader>d :LspDefinition<CR>
+map <silent> <Leader>i :LspImplementation<CR>
+map <silent> <Leader>h :LspHover<CR>
+let g:lsp_diagnostics_echo_cursor = 1
+" Async Completion
+let g:asyncomplete_auto_popup = 1
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" Preview window
+set completeopt=menuone,noinsert,noselect,preview
 
-map <silent> <C-n> :NERDTreeTabsToggle<CR>
-let g:nerdtree_tabs_open_on_gui_startup=0
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'allowlist': ['*'],
+    \ 'blocklist': ['markdown'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ 'config': {
+    \    'max_buffer_size': 5000000,
+    \  },
+    \ }))
