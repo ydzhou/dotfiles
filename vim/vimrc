@@ -44,9 +44,9 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set cindent autoindent
 set clipboard+=unnamed
 
-"set ruler
+" set ruler
 set laststatus=2
-set statusline=[%03l,%03v][%p%%]\ %=%F%m%r%h%w%<\ [%{&ff}:%{&fenc!=''?&fenc:&enc}]\ [%Y]
+set statusline=%03l,%03v\ %p%%\ %=%F%m%r%h%w%<\ %Y
 
 syntax on
 if has("gui_running")
@@ -132,7 +132,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 map <silent> <Leader>f :FZF<CR>
 
 " Fern
-map <silent> <C-n> :Fern . -drawer -reveal=% -toggle -width=40<CR><C-w>=
+map <silent> <C-n> :Fern . -drawer -reveal=% -toggle<CR>
 
 " Disable netrw.
 let g:loaded_netrw  = 1
@@ -141,6 +141,7 @@ let g:loaded_netrwSettings = 1
 let g:loaded_netrwFileHandlers = 1
 let g:fern#renderer = "nerdfont"
 let g:fern#disable_default_mappings = 1
+let g:fern#drawer_width = 40
 function! FernInit() abort
   nmap <buffer><expr>
         \ <Plug>(fern-my-open-expand-collapse)
@@ -199,4 +200,3 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
     \    'max_buffer_size': 5000000,
     \  },
     \ }))
-
