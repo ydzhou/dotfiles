@@ -12,10 +12,11 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
-Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/fern-hijack.vim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/nerdfont.vim'
+" Plug 'lambdalisue/fern.vim'
+" Plug 'lambdalisue/fern-hijack.vim'
+" Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+" Plug 'lambdalisue/nerdfont.vim'
+Plug 'justinmk/vim-dirvish'
 " Colorscheme
 Plug 'ydzhou/monocolor.vim'
 Plug 'morhetz/gruvbox'
@@ -129,7 +130,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " let g:ctrlp_max_height=15
 
 " FZF
-map <silent> <Leader>f :FZF<CR>
+map <silent> <Leader>f :Files<CR>
+map <silent> <Leader>fl :Lines<CR>
+let $FZF_DEFAULT_COMMAND = "fd --type file"
 
 " Fern
 map <silent> <C-n> :Fern . -drawer -reveal=% -toggle<CR>

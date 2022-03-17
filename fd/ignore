@@ -1,0 +1,11 @@
+Applications/
+Music/
+Pictures/
+Movies/
+Library/
+*.swp
+*.zip
+.DS_Store
+.git
+.cache/*
+go/pkg/
