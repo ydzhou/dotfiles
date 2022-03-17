@@ -47,7 +47,7 @@ set clipboard+=unnamed
 
 " set ruler
 set laststatus=2
-set statusline=%03l,%03v\ %p%%\ %=%F%m%r%h%w%<\ %Y
+set statusline=%03l,%03v\ %p%%\ %<%=%F%m%r%h%w
 
 syntax on
 if has("gui_running")
@@ -96,8 +96,8 @@ vnoremap k gk
 vnoremap < <gv
 vnoremap > >gv
 " Paste from 0 register to avoid cannot paste after deletion
-nnoremap p "0P
-xnoremap p "0P
+nnoremap d "_d
+xnoremap d "_d
 
 " Automatically open, but do not go to (if there are errors) the quickfix /
 " location list window, or close it when is has become empty.
