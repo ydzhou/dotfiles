@@ -1,13 +1,11 @@
 autocmd! bufwritepost .vimrc source %
 
-language zh_CN.UTF-8
-
 call plug#begin()
 " Bundles
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'prabirshrestha/vim-lsp'
@@ -132,18 +130,22 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " CtrlP
 let g:ctrlp_map = '<leader>/'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/Applications/*,*/Movies/*,*Pictures/*,*/Music/*,*/Library/*,*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
+set wildignore+=*/Downloads/*,*/Applications/*,*/Movies/*,*Pictures/*,*/Music/*,*/Library/*,*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.rvm$'
-let g:ctrlp_max_height=15
+let g:ctrlp_max_height=30
 if executable('fd')
     let g:ctrlp_user_command = 'fd --type file'
 endif
 let g:webdevicons_enable_ctrlp = 1
+let g:ctrlp_by_filename = 0
+let g:ctrlp_max_files = 0
 
 " FZF
 map <silent> <Leader>f :Files<CR>
 map <silent> <Leader>fl :Lines<CR>
 let $FZF_DEFAULT_COMMAND = "fd --type file"
+let g:fzf_layout = { 'down':  '40%'}
+let g:fzf_preview_window = []
 
 " Fern
 map <silent> <C-n> :Fern . -drawer -toggle -width=40<CR>
