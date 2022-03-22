@@ -133,26 +133,25 @@ nnoremap <Leader>// :CtrlPLine<CR>
 let g:ctrlp_map = '<Leader>/'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-            \ 'dir': '\.git$\|\.hg$\|\.svn$\|Library$\|Applications$\|Movies$\|Pictures$\|Music$\|tmp$',
+            \ 'dir': '\.git$\|\.hg$\|\.svn$\|Library$\|Applications$\|Movies$\|Pictures$\|Music$\|Downloads$\|go/pkg$\|tmp$',
             \ 'file': '\.zip$\|\.so$\|\.o$\|\.obj$\|\.class$\|\.DS_Store$'
             \}
-let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:30,results:30'
-" if executable('fd')
-"     let g:ctrlp_user_command = 'fd --type f --color never "" %s'
-" endif
+let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:20,results:20'
 " if executable('rg')
 "     set grepprg=rg\ --color=never
 "     let g:ctrlp_user_command = 'rg %s --files --color=never --glob "" --ignore-file ~/dotfiles/ignore'
-" let g:webdevicons_enable_ctrlp = 1
-let g:ctrlp_by_filename = 0
+" endif    
+let g:webdevicons_enable_ctrlp = 1
+let g:ctrlp_by_filename = 1
 let g:ctrlp_use_caching = 0
 let g:ctrlp_mruf_max = 0
-let g:ctrlp_max_files = 0
+let g:ctrlp_max_files = 1000000
 let g:ctrlp_user_command_async = 0
 
 " FZF
 map <silent> <Leader>f :Files<CR>
 map <silent> <Leader>fl :Lines<CR>
+map <silent> <Leader>fr :Rg<CR>
 let $FZF_DEFAULT_COMMAND = "fd --type file"
 let g:fzf_layout = { 'down':  '40%'}
 let g:fzf_preview_window = []
