@@ -39,6 +39,7 @@ endif
 set encoding=UTF-8
 " Show completion candidates for vim commands
 set wildmenu
+set nofoldenable
 
 set wrap lbr
 set display=lastline
@@ -76,7 +77,7 @@ else
 	colorscheme monocolor
 endif
 
-set incsearch hlsearch ignorecase smartcase
+set incsearch ignorecase smartcase
 
 ""Backup
 set noswapfile
@@ -128,17 +129,26 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "" PLUGINS
 
 " CtrlP
-let g:ctrlp_map = '<leader>/'
+nnoremap <Leader>// :CtrlPLine<CR>
+let g:ctrlp_map = '<Leader>/'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/Downloads/*,*/Applications/*,*/Movies/*,*Pictures/*,*/Music/*,*/Library/*,*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.rvm$'
-let g:ctrlp_max_height=30
-if executable('fd')
-    let g:ctrlp_user_command = 'fd --type file'
-endif
-let g:webdevicons_enable_ctrlp = 1
+let g:ctrlp_custom_ignore = {
+            \ 'dir': '\.git$\|\.hg$\|\.svn$\|Library$\|Applications$\|Movies$\|Pictures$\|Music$\|tmp$',
+            \ 'file': '\.zip$\|\.so$\|\.o$\|\.obj$\|\.class$\|\.DS_Store$'
+            \}
+let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:30,results:30'
+" if executable('fd')
+"     let g:ctrlp_user_command = 'fd --type f --color never "" %s'
+" endif
+" if executable('rg')
+"     set grepprg=rg\ --color=never
+"     let g:ctrlp_user_command = 'rg %s --files --color=never --glob "" --ignore-file ~/dotfiles/ignore'
+" let g:webdevicons_enable_ctrlp = 1
 let g:ctrlp_by_filename = 0
+let g:ctrlp_use_caching = 0
+let g:ctrlp_mruf_max = 0
 let g:ctrlp_max_files = 0
+let g:ctrlp_user_command_async = 0
 
 " FZF
 map <silent> <Leader>f :Files<CR>
@@ -157,8 +167,8 @@ let g:loaded_netrwSettings = 1
 let g:loaded_netrwFileHandlers = 1
 let g:fern#renderer = "nerdfont"
 let g:fern#disable_default_mappings = 1
+let g:fern#disable_drawer_tabpage_isolation = 0
 " let g:fern#drawer_width = 40
-let g:fern#disable_drawer_universal = 0
 function! FernInit() abort
   nmap <buffer><expr>
         \ <Plug>(fern-my-open-expand-collapse)
