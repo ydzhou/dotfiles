@@ -4,8 +4,8 @@ call plug#begin()
 " Bundles
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'prabirshrestha/vim-lsp'
@@ -13,17 +13,11 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
-Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/fern-hijack.vim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'justinmk/vim-dirvish'
 " Colorscheme
 Plug 'ydzhou/monocolor.vim'
 Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
-Plug 'vim-scripts/pyte'
 Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
@@ -43,13 +37,38 @@ set nofoldenable
 
 set wrap lbr
 set display=lastline
-set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab shiftround
+set showmatch matchtime=1 matchpairs&
 set cindent autoindent
 set clipboard+=unnamed
+set signcolumn=yes
 
 " set ruler
 set laststatus=2
-set statusline=%03l,%03v\ %p%%\ %<%=%F%m%r%h%w
+set statusline=%!Statusline()
+function! Statusline() abort
+	let focused = g:statusline_winid == win_getid(winnr())
+    if !focused
+        return ''
+    endif    
+    if mode()=='n'
+        return '缓冲区 ' . BufferList()
+    endif    
+    let statusline = '%03l,%03v %p%% %<%=%{WebDevIconsGetFileTypeSymbol()}%F%m%r%h%w'
+	return statusline
+endfunction
+
+function! BufferList() abort
+    let bufline = ''
+    for bufinfo in getbufinfo({'buflisted': 1})
+        let bufline = bufline . bufinfo.bufnr . ':'
+        if exists('*WebDevIconsGetFileTypeSymbol')
+            let bufline = bufline . WebDevIconsGetFileTypeSymbol(bufinfo.name)
+        endif
+        let bufline = bufline . fnamemodify(bufinfo.name, ':t') . ' '
+    endfor
+    return bufline
+endfunction
 
 syntax on
 if has("gui_running")
@@ -57,8 +76,9 @@ if has("gui_running")
 	" set guifont=AnonymousProMinus:h16
     " set guifont=Menlo-Regular:h16
     " set guifont=IosevkaNerdFontComplete-:h15
-    set guifont=MesloLGMNerdFontComplete-Regular:h15
-	set linespace=2
+    set guifont=LiterationMonoNerdFontComplete-:h17
+    " set guifont=MesloLGMNerdFontComplete-Regular:h15
+    set linespace=4
     set guioptions-=m
 	set guioptions-=r
 	set guioptions-=T
@@ -88,7 +108,7 @@ map ; <C-d>
 map ' <C-u>
 map <silent> <Leader>, <C-o>
 map <silent> <Leader>. <C-i>
-"" standard keys for wrapped lines
+" standard keys for wrapped lines
 set whichwrap+=<,>,[,]
 nnoremap j gj
 nnoremap k gk
@@ -102,8 +122,8 @@ nnoremap d "_d
 xnoremap d "_d
 nnoremap x "_x
 xnoremap x "_x
-" Cancel search highlights
-nnoremap <C-h> :nohl<CR>
+nnoremap s "_s
+xnoremap s "_s
 
 " Automatically open, but do not go to (if there are errors) the quickfix /
 " location list window, or close it when is has become empty.
@@ -129,74 +149,33 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "" PLUGINS
 
 " CtrlP
-nnoremap <Leader>// :CtrlPLine<CR>
-let g:ctrlp_map = '<Leader>/'
+let g:ctrlp_map = '<Leader>f'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
             \ 'dir': '\.git$\|\.hg$\|\.svn$\|Library$\|Applications$\|Movies$\|Pictures$\|Music$\|Downloads$\|go/pkg$\|tmp$',
             \ 'file': '\.zip$\|\.so$\|\.o$\|\.obj$\|\.class$\|\.DS_Store$'
             \}
 let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:20,results:20'
-" if executable('rg')
-"     set grepprg=rg\ --color=never
-"     let g:ctrlp_user_command = 'rg %s --files --color=never --glob "" --ignore-file ~/dotfiles/ignore'
-" endif    
+if executable('rg')
+    set grepprg=rg\ --color=never
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob "" --ignore-file ~/dotfiles/ignore'
+endif    
 let g:webdevicons_enable_ctrlp = 1
-let g:ctrlp_by_filename = 1
-let g:ctrlp_use_caching = 0
-let g:ctrlp_mruf_max = 0
-let g:ctrlp_max_files = 1000000
+let g:ctrlp_by_filename = 0
+let g:ctrlp_use_caching = 1
 let g:ctrlp_user_command_async = 0
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_max_files = 0
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+" let g:ctrlp_match_func = {'match': 'speedmatcher#match'}
 
 " FZF
-map <silent> <Leader>f :Files<CR>
-map <silent> <Leader>fl :Lines<CR>
-map <silent> <Leader>fr :Rg<CR>
-let $FZF_DEFAULT_COMMAND = "fd --type file"
-let g:fzf_layout = { 'down':  '40%'}
-let g:fzf_preview_window = []
-
-" Fern
-map <silent> <C-n> :Fern . -drawer -toggle -width=40<CR>
-
-" Disable netrw.
-let g:loaded_netrw  = 1
-let g:loaded_netrwPlugin = 1
-let g:loaded_netrwSettings = 1
-let g:loaded_netrwFileHandlers = 1
-let g:fern#renderer = "nerdfont"
-let g:fern#disable_default_mappings = 1
-let g:fern#disable_drawer_tabpage_isolation = 0
-" let g:fern#drawer_width = 40
-function! FernInit() abort
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
-  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> o <Plug>(fern-action-open)
-  nmap <buffer> t <Plug>(fern-action-open:tabedit)
-  nmap <buffer> n <Plug>(fern-action-new-path)
-  nmap <buffer> N <Plug>(fern-action-new-file)
-  nmap <buffer> y <Plug>(fern-action-copy)
-  nmap <buffer> p <Plug>(fern-action-paste)
-  nmap <buffer> m <Plug>(fern-action-move)
-  nmap <buffer> D <Plug>(fern-action-remove)
-  nmap <buffer> r <Plug>(fern-action-rename)
-  nmap <buffer> h <Plug>(fern-action-hidden-toggle)j
-  nmap <buffer> R <Plug>(fern-action-reload)
-  nmap <buffer> k <Plug>(fern-action-mark-toggle)j
-  nmap <buffer><nowait> > <Plug>(fern-action-open-or-enter)
-  nmap <buffer><nowait> < <Plug>(fern-action-leave)
-endfunction
-augroup FernGroup
-  autocmd!
-  autocmd FileType fern call FernInit()
-augroup END
+" map <silent> <Leader>f :Files<CR>
+" map <silent> <Leader>fl :Lines<CR>
+" map <silent> <Leader>fr :Rg<CR>
+" let $FZF_DEFAULT_COMMAND = "fd --type file"
+" let g:fzf_layout = { 'down':  '40%'}
+" let g:fzf_preview_window = []
 
 " TComment
 "let g:tcommentOptions = {'whitespace' : 'no'}
@@ -215,7 +194,7 @@ let g:asyncomplete_min_chars = 0
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 " Preview window
-set completeopt=menuone,noinsert,noselect,preview
+set completeopt=menuone,noinsert,preview
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
     \ 'name': 'buffer',
@@ -226,3 +205,8 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
     \    'max_buffer_size': 5000000,
     \  },
     \ }))
+
+" nnoremap <silent> <C-n> :split<CR>:Dirvish<CR> 
+" call dirvish#add_icon_fn({ p -> WebDevIconsGetFileTypeSymbol(p, p[-1:]=='/'?1:0) })
+" let g:dirvish_relative_paths = 1
+" let g:dirvish_mode = ':sort ,^.*[\/],'
