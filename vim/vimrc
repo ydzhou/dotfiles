@@ -1,5 +1,3 @@
-autocmd! bufwritepost .vimrc source %
-
 call plug#begin()
 " Bundles
 Plug 'ctrlpvim/ctrlp.vim'
@@ -13,6 +11,10 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-hijack.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/nerdfont.vim'
 " Colorscheme
 Plug 'ydzhou/monocolor.vim'
 Plug 'morhetz/gruvbox'
@@ -35,6 +37,10 @@ set encoding=UTF-8
 set wildmenu
 set nofoldenable
 
+filetype on
+filetype plugin on
+filetype indent on
+
 set wrap lbr
 set display=lastline
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab shiftround
@@ -44,31 +50,9 @@ set clipboard+=unnamed
 set signcolumn=yes
 
 " set ruler
+source ~/dotfiles/vim/configs/statusline.vim
 set laststatus=2
 set statusline=%!Statusline()
-function! Statusline() abort
-	let focused = g:statusline_winid == win_getid(winnr())
-    if !focused
-        return ''
-    endif    
-    if mode()=='n'
-        return '缓冲区 ' . BufferList()
-    endif    
-    let statusline = '%03l,%03v %p%% %<%=%{WebDevIconsGetFileTypeSymbol()}%F%m%r%h%w'
-	return statusline
-endfunction
-
-function! BufferList() abort
-    let bufline = ''
-    for bufinfo in getbufinfo({'buflisted': 1})
-        let bufline = bufline . bufinfo.bufnr . ':'
-        if exists('*WebDevIconsGetFileTypeSymbol')
-            let bufline = bufline . WebDevIconsGetFileTypeSymbol(bufinfo.name)
-        endif
-        let bufline = bufline . fnamemodify(bufinfo.name, ':t') . ' '
-    endfor
-    return bufline
-endfunction
 
 syntax on
 if has("gui_running")
@@ -86,8 +70,8 @@ if has("gui_running")
 	set guioptions-=L
 	set lines=40
 	set columns=120
-	" set background=dark
-	colorscheme monocolor
+	set background=dark
+	colorscheme gruvbox
     autocmd InsertEnter,InsertLeave * set cul!
 else
 	set guioptions-=e
@@ -125,88 +109,17 @@ xnoremap x "_x
 nnoremap s "_s
 xnoremap s "_s
 
-" Automatically open, but do not go to (if there are errors) the quickfix /
-" location list window, or close it when is has become empty.
-"
-" Note: Must allow nesting of autocmds to enable any customizations for quickfix
-" buffers.
-" Note: Normally, :cwindow jumps to the quickfix window if the command opens it
-" (but not if it's already open). However, as part of the autocmd, this doesn't
-" seem to happen.
-"autocmd QuickFixCmdPost [^l]* nested cwindow
-"autocmd QuickFixCmdPost    l* nested lwindow
-autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
-
-""""""""""""""""""""""""""
-"" LANGUAGES CUSTOMIZATION
-filetype on
-filetype plugin on
-filetype indent on
-
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 """"""""""""""""""""""""""
 "" PLUGINS
 
-" CtrlP
-let g:ctrlp_map = '<Leader>f'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = {
-            \ 'dir': '\.git$\|\.hg$\|\.svn$\|Library$\|Applications$\|Movies$\|Pictures$\|Music$\|Downloads$\|go/pkg$\|tmp$',
-            \ 'file': '\.zip$\|\.so$\|\.o$\|\.obj$\|\.class$\|\.DS_Store$'
-            \}
-let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:20,results:20'
-if executable('rg')
-    set grepprg=rg\ --color=never
-    let g:ctrlp_user_command = 'rg %s --files --color=never --glob "" --ignore-file ~/dotfiles/ignore'
-endif    
-let g:webdevicons_enable_ctrlp = 1
-let g:ctrlp_by_filename = 0
-let g:ctrlp_use_caching = 1
-let g:ctrlp_user_command_async = 0
-let g:ctrlp_clear_cache_on_exit = 1
-let g:ctrlp_max_files = 0
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-" let g:ctrlp_match_func = {'match': 'speedmatcher#match'}
-
-" FZF
-" map <silent> <Leader>f :Files<CR>
-" map <silent> <Leader>fl :Lines<CR>
-" map <silent> <Leader>fr :Rg<CR>
-" let $FZF_DEFAULT_COMMAND = "fd --type file"
-" let g:fzf_layout = { 'down':  '40%'}
-" let g:fzf_preview_window = []
+source ~/dotfiles/vim/configs/lspcomp.vim
+source ~/dotfiles/vim/configs/fern.vim
+source ~/dotfiles/vim/configs/ctrlp.vim
+" source ~/dotfiles/vim/configs/vimdirvish.vim
+" source ~/dotfiles/vim/configs/fzf.vim
 
 " TComment
 "let g:tcommentOptions = {'whitespace' : 'no'}
 map <silent> <Leader>c :TComment<CR>
-
-" LSP
-map <silent> <Leader>d :LspDefinition<CR>
-map <silent> <Leader>i :LspImplementation<CR>
-map <silent> <Leader>h :LspHover<CR>
-let g:lsp_diagnostics_echo_cursor = 1
-" Async Completion
-" Auto popup
-let g:asyncomplete_auto_popup = 1
-" Minimum char to autocomplete
-let g:asyncomplete_min_chars = 0
-
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-" Preview window
-set completeopt=menuone,noinsert,preview
-
-call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-    \ 'name': 'buffer',
-    \ 'allowlist': ['*'],
-    \ 'blocklist': ['markdown'],
-    \ 'completor': function('asyncomplete#sources#buffer#completor'),
-    \ 'config': {
-    \    'max_buffer_size': 5000000,
-    \  },
-    \ }))
-
-" nnoremap <silent> <C-n> :split<CR>:Dirvish<CR> 
-" call dirvish#add_icon_fn({ p -> WebDevIconsGetFileTypeSymbol(p, p[-1:]=='/'?1:0) })
-" let g:dirvish_relative_paths = 1
-" let g:dirvish_mode = ':sort ,^.*[\/],'
