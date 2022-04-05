@@ -22,6 +22,7 @@ Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 set nocompatible
@@ -72,7 +73,7 @@ if has("gui_running")
 	set lines=40
 	set columns=120
 	set background=dark
-	colorscheme gruvbox
+	colorscheme iceberg
     autocmd InsertEnter,InsertLeave * set cul!
 else
 	set guioptions-=e
