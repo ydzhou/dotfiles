@@ -1,4 +1,13 @@
-function! Statusline() abort
+function! SimStatusline() abort
+	let focused = g:statusline_winid == win_getid(winnr())
+    if !focused
+        return ''
+    endif    
+    let statusline = "%{mode() == 'n' ? '🔎' : '🖌'} %03l,%03v %p%% %<%=%{WebDevIconsGetFileTypeSymbol()}%F%m%r%h%w"
+	return statusline
+endfunction
+
+function! BufferStatusline() abort
 	let focused = g:statusline_winid == win_getid(winnr())
     if !focused
         return ''

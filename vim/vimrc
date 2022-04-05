@@ -15,6 +15,7 @@ Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/nerdfont.vim'
+Plug 'mhinz/vim-startify'
 " Colorscheme
 Plug 'ydzhou/monocolor.vim'
 Plug 'morhetz/gruvbox'
@@ -47,12 +48,12 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab shiftround
 set showmatch matchtime=1 matchpairs&
 set cindent autoindent
 set clipboard+=unnamed
-set signcolumn=yes
+set signcolumn=number
 
 " set ruler
 source ~/dotfiles/vim/configs/statusline.vim
 set laststatus=2
-set statusline=%!Statusline()
+set statusline=%!SimStatusline()
 
 syntax on
 if has("gui_running")
@@ -119,6 +120,8 @@ source ~/dotfiles/vim/configs/fern.vim
 source ~/dotfiles/vim/configs/ctrlp.vim
 " source ~/dotfiles/vim/configs/vimdirvish.vim
 " source ~/dotfiles/vim/configs/fzf.vim
+source ~/dotfiles/vim/configs/startify.vim
+source ~/dotfiles/vim/configs/startify_quotes.vim
 
 " TComment
 "let g:tcommentOptions = {'whitespace' : 'no'}
