@@ -115,6 +115,9 @@ xnoremap s "_s
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" Quickfix window auto close when closing a window
+autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+
 """"""""""""""""""""""""""
 "" PLUGINS
 
