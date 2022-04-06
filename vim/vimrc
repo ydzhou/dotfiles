@@ -94,6 +94,8 @@ map ; <C-d>
 map ' <C-u>
 map <silent> <Leader>, <C-o>
 map <silent> <Leader>. <C-i>
+" Disable mouse double clicking for accidentally switching to visual mode
+map <2-LeftMouse> <Nop>
 " standard keys for wrapped lines
 set whichwrap+=<,>,[,]
 nnoremap j gj
