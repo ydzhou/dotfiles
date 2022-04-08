@@ -26,11 +26,13 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require'nvim-tree'.setup {
-    auto_close = true,
     disable_netrw = true,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
     sort_by = "name",
+    git = {
+        enable = false,
+    },
     view = {
         width = 40,
         side = "left",

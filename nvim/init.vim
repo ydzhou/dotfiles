@@ -11,6 +11,9 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'ydzhou/simple-statusline.vim', {'branch': 'main'}
+" Colorscheme
+Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 lua require("_plugins")
@@ -26,8 +29,8 @@ set autoread
 " UI SETTING
 syntax on
 
-color one
-set background=light
+set background=dark
+color iceberg
 
 " autocmd InsertEnter,InsertLeave * set cul!
 
@@ -37,7 +40,7 @@ set incsearch ignorecase smartcase "hlsearch
 
 "set ruler
 set laststatus=2
-set statusline=%03l,%03v\ %p%%\ %=%F%m%r%h%w%<
+set statusline=%!SimStatusline()
 set display=lastline
 
 set encoding=utf-8
@@ -46,6 +49,8 @@ set number
 let mapleader=","
 map ; <C-d>
 map ' <C-u>
+map <silent> <Leader>, <C-o>
+map <silent> <Leader>. <C-i>
 "" standard keys for wrapped lines
 set whichwrap+=<,>,[,]
 nnoremap j gj
@@ -66,9 +71,15 @@ map <silent> <Leader>c :TComment<CR>
 
 " Code navigation shortcuts
 " as found in :help lsp
-nnoremap <silent> <Leader>d <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <Leader>h <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gi <cmd>lua vim.lsp.buf.implemetation()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
+
+" Auto close when nvim-tree is the last window
+autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif

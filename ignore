@@ -4,7 +4,7 @@ Pictures/
 Movies/
 Library/
 Downloads/
-/go/pkg/
+*/go/pkg/
 .Trash/
 *.swp
 *.zip
@@ -14,3 +14,4 @@ Downloads/
 .DS_Store
 .git
 .cache/*
+*/tmp/*

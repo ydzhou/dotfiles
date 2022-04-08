@@ -16,6 +16,7 @@ Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'mhinz/vim-startify'
+Plug 'ydzhou/simple-statusline.vim'
 " Colorscheme
 Plug 'ydzhou/monocolor.vim'
 Plug 'morhetz/gruvbox'
@@ -52,7 +53,7 @@ set clipboard+=unnamed
 set signcolumn=number
 
 " set ruler
-source ~/dotfiles/vim/configs/statusline.vim
+" source ~/dotfiles/vim/configs/statusline.vim
 set laststatus=2
 set statusline=%!SimStatusline()
 
