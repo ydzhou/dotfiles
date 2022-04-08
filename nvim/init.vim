@@ -64,9 +64,6 @@ nnoremap <C-n> :NvimTreeToggle<CR>
 "let g:tcommentOptions = {'whitespace' : 'no'}
 map <silent> <Leader>c :TComment<CR>
 
-" Autocompletion
-set completeopt=menu,menuone,noselect
-
 " Code navigation shortcuts
 " as found in :help lsp
 nnoremap <silent> <Leader>d <cmd>lua vim.lsp.buf.definition()<CR>
