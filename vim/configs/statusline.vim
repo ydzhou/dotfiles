@@ -3,7 +3,14 @@ function! SimStatusline() abort
     if !focused
         return ''
     endif    
-    let statusline = "%{mode() == 'n' ? '🔎' : '🖌'} %03l,%03v %p%% %<%=%{WebDevIconsGetFileTypeSymbol()}%F%m%r%h%w"
+    if mode() == 'n'
+        let modeSymbol = '🔏'
+    elseif mode() == 'i'
+        let modeSymbol = '🖌'
+    else
+        let modeSymbol = '🔎'
+    endif
+    let statusline = modeSymbol . " %03l,%03v %p%% %<%=%{WebDevIconsGetFileTypeSymbol()}%F%m%r%h%w"
 	return statusline
 endfunction
 

@@ -70,8 +70,8 @@ if has("gui_running")
 	set guioptions-=T
 	set guioptions-=e
 	set guioptions-=L
-	set lines=40
-	set columns=120
+	set lines=50
+	set columns=150
 	set background=dark
 	colorscheme iceberg
     autocmd InsertEnter,InsertLeave * set cul!
@@ -79,8 +79,8 @@ else
 	set guioptions-=e
 	set t_Co=256
 	set number
-	" set background=dark
-	colorscheme monocolor
+	set background=dark
+	colorscheme iceberg
 endif
 
 set incsearch ignorecase smartcase
