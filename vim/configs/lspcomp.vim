@@ -2,11 +2,6 @@
 " Github repo: https://github.com/prabirshrestha/vim-lsp
 
 " Global mapping
-" nmap <silent> <Leader>d <plug>(lsp-definition)
-" nmap <silent> <Leader>hd <plug>(lsp-peek-definition)
-" nmap <silent> <Leader>i <plug>(lsp-implementation)
-" nmap <silent> <Leader>hi <plug>(lsp-peek-implementation)
-" nmap <silent> <Leader>h <plug>(lsp-hover)
 nmap <silent> gd <plug>(lsp-definition)
 nmap <silent> ghd <plug>(lsp-peek-definition)
 nmap <silent> gD <plug>(lsp-declaration)
