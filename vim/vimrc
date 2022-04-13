@@ -1,9 +1,9 @@
 call plug#begin()
 " Bundles
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'prabirshrestha/vim-lsp'
@@ -63,9 +63,10 @@ if has("gui_running")
 	" set guifont=AnonymousProMinus:h16
     " set guifont=Menlo-Regular:h16
     " set guifont=IosevkaNerdFontComplete-:h15
-    set guifont=LiterationMonoNerdFontComplete-:h17
+    " set guifont=LiterationMonoNerdFontComplete-:h17
+    set guifont=mononokiNerdFontComplete-Regular:h18
     " set guifont=MesloLGMNerdFontComplete-Regular:h15
-    set linespace=4
+    set linespace=2
     set guioptions-=m
 	set guioptions-=r
 	set guioptions-=T
@@ -77,7 +78,9 @@ if has("gui_running")
 	colorscheme iceberg
     autocmd InsertEnter,InsertLeave * set cul!
 else
-	set guioptions-=e
+    let &t_SI = "\e[6 q"
+    let &t_EI = "\e[2 q"
+    let &t_ut = ''
 	set t_Co=256
 	set number
 	set background=dark
@@ -124,9 +127,9 @@ autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype"
 
 source ~/dotfiles/vim/configs/lspcomp.vim
 source ~/dotfiles/vim/configs/fern.vim
-source ~/dotfiles/vim/configs/ctrlp.vim
+" source ~/dotfiles/vim/configs/ctrlp.vim
 " source ~/dotfiles/vim/configs/vimdirvish.vim
-" source ~/dotfiles/vim/configs/fzf.vim
+source ~/dotfiles/vim/configs/fzf.vim
 source ~/dotfiles/vim/configs/startify.vim
 source ~/dotfiles/vim/configs/startify_quotes.vim
 
