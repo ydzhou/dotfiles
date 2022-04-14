@@ -28,7 +28,7 @@ vim.api.nvim_set_keymap('n', '<C-n>', "<cmd>lua require'nvim-tree'.toggle()<CR>"
 vim.api.nvim_set_keymap('n', '<Leader>f', "<cmd>lua require('fzf-lua').files()<CR>", opts)
 vim.api.nvim_set_keymap('n', '<Leader>fb', "<cmd>lua require('fzf-lua').buffers()<CR>", opts)
 vim.api.nvim_set_keymap('n', '<Leader>fl', "<cmd>lua require('fzf-lua').lines()<CR>", opts)
-vim.api.nvim_set_keymap('n', '<Leader>fr', "<cmd>lua require('fzf-lua').grep()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<Leader>fr', "<cmd>lua require('fzf-lua').live_grep()<CR>", opts)
 
 -- Language Server Protocol
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)

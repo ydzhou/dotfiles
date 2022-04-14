@@ -50,6 +50,8 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab shiftround
 set showmatch matchtime=1 matchpairs&
 set cindent autoindent
 set clipboard+=unnamed
+
+set number
 set signcolumn=number
 
 " set ruler
@@ -59,7 +61,6 @@ set statusline=%!SimStatusline()
 
 syntax on
 if has("gui_running")
-	set number
 	" set guifont=AnonymousProMinus:h16
     " set guifont=Menlo-Regular:h16
     " set guifont=IosevkaNerdFontComplete-:h15
@@ -80,9 +81,9 @@ if has("gui_running")
 else
     let &t_SI = "\e[6 q"
     let &t_EI = "\e[2 q"
+    " Fix Kitty issue with vim colorscheme background
     let &t_ut = ''
 	set t_Co=256
-	set number
 	set background=dark
 	colorscheme iceberg
 endif

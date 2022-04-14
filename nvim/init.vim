@@ -2,6 +2,7 @@ call plug#begin()
 Plug 'tomtom/tcomment_vim'
 Plug 'rakr/vim-one'
 Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim', {'branch': 'main'}
 Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
 Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
 Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
@@ -14,6 +15,8 @@ Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 " Colorscheme
 Plug 'cocopon/iceberg.vim'
 Plug 'rakr/vim-one'
+Plug 'overcache/NeoSolarized'
+Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 lua require("custom/plugins")
@@ -30,7 +33,7 @@ set noswapfile
 syntax on
 
 set background=light
-color one
+color solarized8
 
 autocmd InsertEnter,InsertLeave * set cul!
 
@@ -45,8 +48,11 @@ set display=lastline
 
 set encoding=utf-8
 set number
+set signcolumn=number
 "" standard keys for wrapped lines
 set whichwrap+=<,>,[,]
+
+set clipboard+=unnamed
 
 """ Plugin Configurations
 

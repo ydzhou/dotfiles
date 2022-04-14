@@ -1,3 +1,23 @@
+local saga = require('lspsaga')
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = false,
+    update_in_insert = false, 
+})
+
+local diag_signs = {
+    Error = '🧨',
+    Warn = '⚠️',
+    Info = '💬',
+    Hint = '💡',
+}
+for type, icon in pairs(diag_signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 local nvim_lsp = require('lspconfig')
 
 nvim_lsp.gopls.setup{
@@ -27,6 +47,6 @@ nvim_lsp.gopls.setup{
 --     }
 -- }
 
-require'lspconfig'.clangd.setup {
+nvim_lsp.clangd.setup {
     filetypes = {'c', 'cpp', 'h', 'hpp'},
 }
