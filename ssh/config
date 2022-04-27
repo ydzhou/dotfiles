@@ -1,7 +1,0 @@
-Cipher blowfish
-Ciphers blowfish-cbc,aes128-cbc,3des-cbc,cast128-cbc,arcfour,aes192-cbc,aes256-cbc
-#KeepAlive yes
-#TCPKeepAlive yes
-#ServerAliveInterval 60
-Compression yes
-CompressionLevel 9

@@ -21,3 +21,7 @@ PROMPT="%B%n @ %m • %b%D%B • %~ > %b"
 alias ls="ls -F"
 
 alias mvim="/Applications/MacVim.app/Contents/bin/mvim"
+
+GOPATH=$HOME/Dev/go
+GOBIN=$GOPATH/bin
+PATH=$PATH:GOBIN

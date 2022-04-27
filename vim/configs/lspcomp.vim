@@ -28,7 +28,7 @@ let g:lsp_hover_ui = 'preview'
 
 " Auto completion
 " Minimum char to autocomplete
-let g:asyncomplete_min_chars = 0
+let g:asyncomplete_min_chars = 2
 " Auto popup
 let g:asyncomplete_auto_popup = 1
 " Disable auto config (which will override existing completopt settings)

@@ -9,7 +9,6 @@ Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
 Plug 'windwp/nvim-autopairs'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ydzhou/simple-statusline.vim', {'branch': 'main'}
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 " Colorscheme
