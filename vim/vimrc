@@ -1,7 +1,6 @@
 call plug#begin()
 " Bundles
 " Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tomtom/tcomment_vim'
@@ -55,7 +54,6 @@ set number
 set signcolumn=number
 
 " set ruler
-" source ~/dotfiles/vim/configs/statusline.vim
 set laststatus=2
 set statusline=%!SimStatusline()
 

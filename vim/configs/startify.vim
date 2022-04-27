@@ -18,6 +18,6 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_custom_header =
           \ 'startify#center(startify#fortune#quote())'
 
-function! StartifyEntryFormat()
-    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
-endfunction
+" function! StartifyEntryFormat()
+"     return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+" endfunction
