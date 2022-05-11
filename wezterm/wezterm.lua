@@ -4,7 +4,7 @@ local termcolor_fg = "#2b2b2b"
 local termcolor_cursor_bg = "#b0b0b0"
 
 return {
-    font = wezterm.font("LiterationMonoNerdFontComplete-", {weight="Regular"}),
+    font = wezterm.font("BlexMono Nerd Font", {weight="Regular"}),
     font_size = 15,
 
     enable_tab_bar = true,
@@ -20,16 +20,18 @@ return {
         {key = "v", mods = "CMD", action = wezterm.action{PasteFrom="Clipboard"}},
     },
 
-    colors = {
-        foreground = termcolor_fg,
-        background = "#f0f0f0",
-        cursor_bg = termcolor_cursor_bg,
-        cursor_fg = termcolor_fg,
-
-        selection_fg = termcolor_fg,
-        selection_bg = termcolor_cursor_bg,
-
-        split = "#444444",
-    },
+    -- colors = {
+    --     foreground = termcolor_fg,
+    --     background = "#f0f0f0",
+    --     cursor_bg = termcolor_cursor_bg,
+    --     cursor_fg = termcolor_fg,
+    --
+    --     selection_fg = termcolor_fg,
+    --     selection_bg = termcolor_cursor_bg,
+    --
+    --     split = "#444444",
+    -- },
+    
+    color_scheme = "nord",
 
 }
