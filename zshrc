@@ -1,11 +1,8 @@
-export LANG=zh_CN.UTF-8
-export LC_ALL=zh_CN.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 autoload -U colors
 autoload -U compinit
-
-setopt AUTO_CD
-setopt NO_BEEP
 
 colors
 compinit
@@ -16,7 +13,7 @@ SAVEHIST=10000
 
 EDITOR=vim
 
-PROMPT="%B%n @ %m • %b%D%B • %~ > %b"
+PROMPT="%B%{$fg[red]%}%m%{$reset_color%}%b %{$fg[blue]%}%D{%L:%M %d-%m}%{$reset_color%} %{$fg[cyan]%}%~%{$reset_color%}"$'\n'"%B> %b"
 
 alias ls="ls -F"
 
