@@ -11,7 +11,10 @@ let g:loaded_netrwSettings = 1
 let g:loaded_netrwFileHandlers = 1
 
 " General configs
-let g:fern#renderer = "nerdfont"
+" let g:fern#renderer = "nerdfont"
+let g:fern#renderer#default#leaf_symbol = ' '
+let g:fern#renderer#default#collapsed_symbol = '▸ '
+let g:fern#renderer#default#expanded_symbol = '▾ '
 let g:fern#drawer_width = 40
 let g:fern#disable_default_mappings = 1
 let g:fern#disable_drawer_tabpage_isolation = 1

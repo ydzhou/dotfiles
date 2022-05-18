@@ -17,8 +17,7 @@ PROMPT="%B%{$fg[red]%}%m%{$reset_color%}%b %{$fg[blue]%}%D{%L:%M %d-%m}%{$reset_
 
 alias ls="ls -F"
 
-alias mvim="/Applications/MacVim.app/Contents/bin/mvim"
-
-GOPATH=$HOME/Dev/go
-GOBIN=$GOPATH/bin
-PATH=$PATH:GOBIN
+export GOPATH=$HOME/Developer/go
+export GOMODCACHE=$GOPATH/pkg/mod
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:GOBIN

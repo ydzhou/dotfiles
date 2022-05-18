@@ -1,6 +1,7 @@
 call plug#begin()
 " Bundles
 " Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'jiangmiao/auto-pairs'
@@ -72,8 +73,8 @@ if has("gui_running")
 	set guioptions-=L
 	set lines=50
 	set columns=150
-	set background=dark
-	colorscheme iceberg
+	" set background=dark
+	colorscheme PaperColor
     autocmd InsertEnter,InsertLeave * set cul!
 else
     let &t_SI = "\e[6 q"
@@ -81,8 +82,8 @@ else
     " Fix Kitty issue with vim colorscheme background
     let &t_ut = ''
 	set t_Co=256
-	set background=dark
-	colorscheme iceberg
+	" set background=dark
+	colorscheme PaperColor
 endif
 
 set incsearch ignorecase smartcase
