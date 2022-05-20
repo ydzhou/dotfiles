@@ -81,8 +81,7 @@ else
     " Fix Kitty issue with vim colorscheme background
     let &t_ut = ''
 	set t_Co=256
-	set background=dark
-	colorscheme iceberg
+	colorscheme gruvbox
 endif
 
 set incsearch ignorecase smartcase

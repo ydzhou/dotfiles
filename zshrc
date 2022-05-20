@@ -1,5 +1,5 @@
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LANG=zh_CN.UTF-8
+export LC_ALL=zh_CN.UTF-8
 
 autoload -U colors
 autoload -U compinit
@@ -19,6 +19,7 @@ alias ls="ls -F"
 
 alias mvim="/Applications/MacVim.app/Contents/bin/mvim"
 
-GOPATH=$HOME/Dev/go
-GOBIN=$GOPATH/bin
-PATH=$PATH:GOBIN
+export GOPATH=$HOME/Dev/go
+export GOMODCACHE=$GOPATH/pkg/mod
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:GOBIN
