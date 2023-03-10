@@ -23,6 +23,8 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'cocopon/iceberg.vim'
+Plug 'sainnhe/sonokai'
+Plug 'sainnhe/everforest'
 call plug#end()
 
 set nocompatible
@@ -74,7 +76,7 @@ if has("gui_running")
 	set lines=50
 	set columns=150
 	" set background=dark
-	colorscheme PaperColor
+	colorscheme monocolor
     autocmd InsertEnter,InsertLeave * set cul!
 else
     let &t_SI = "\e[6 q"
@@ -82,8 +84,8 @@ else
     " Fix Kitty issue with vim colorscheme background
     let &t_ut = ''
 	set t_Co=256
-	" set background=dark
-	colorscheme PaperColor
+	set background=dark
+	colorscheme everforest
 endif
 
 set incsearch ignorecase smartcase

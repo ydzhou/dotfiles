@@ -12,6 +12,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 EDITOR=vim
+GIT_EDITOR=vim
 
 PROMPT="%B%{$fg[red]%}%m%{$reset_color%}%b %{$fg[blue]%}%D{%L:%M %d-%m}%{$reset_color%} %{$fg[cyan]%}%~%{$reset_color%}"$'\n'"%B> %b"
 
