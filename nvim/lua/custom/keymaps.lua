@@ -22,7 +22,7 @@ vim.api.nvim_set_keymap('n', '<C-s>', ":w<CR>", opts)
 vim.api.nvim_set_keymap('n', '<Leader>c', ":TComment<CR>", opts)
 
 -- Nvim Tree
-vim.api.nvim_set_keymap('n', '<C-n>', "<cmd>lua require'nvim-tree'.toggle()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<C-n>', ":NvimTreeToggle<CR>", opts)
 
 -- Fzf
 vim.api.nvim_set_keymap('n', '<Leader>f', "<cmd>lua require('fzf-lua').files()<CR>", opts)
