@@ -49,4 +49,7 @@ require'nvim-tree'.setup {
         cmd = "rm",
         require_confirm = true,
     },
+    tab = {
+        sync = {open = true, close = true},
+    },
 }

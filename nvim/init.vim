@@ -2,15 +2,15 @@ call plug#begin()
 Plug 'tomtom/tcomment_vim'
 Plug 'rakr/vim-one'
 Plug 'neovim/nvim-lspconfig'
-Plug 'glepnir/lspsaga.nvim', {'branch': 'main'}
-Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
-Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
-Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
+Plug 'glepnir/lspsaga.nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'windwp/nvim-autopairs'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ydzhou/simple-statusline.vim', {'branch': 'main'}
-Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+Plug 'ydzhou/simple-statusline.vim'
+Plug 'ibhagwan/fzf-lua'
 " Colorscheme
 Plug 'cocopon/iceberg.vim'
 Plug 'rakr/vim-one'
