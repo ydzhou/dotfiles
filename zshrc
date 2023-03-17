@@ -21,4 +21,4 @@ alias ls="ls -F"
 export GOPATH=$HOME/Developer/go
 export GOMODCACHE=$GOPATH/pkg/mod
 export GOBIN=$GOPATH/bin
-export PATH=$PATH:GOBIN
+export PATH=$PATH:$GOBIN

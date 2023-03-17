@@ -3,6 +3,7 @@
 
 " Global trigger mapping
 map <silent> <C-n> :Fern . -drawer -reveal=% -toggle<CR><C-w>=
+map <silent> <C-p> :Fern . -reveal=% <CR><C-w>=
 
 " Disable netrw
 let g:loaded_netrw  = 1

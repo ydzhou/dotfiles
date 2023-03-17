@@ -61,15 +61,15 @@ set statusline=%!SimStatusline()
 
 syntax on
 if has("gui_running")
-	" set guifont=AnonymousProMinus:h16
-    " set guifont=Menlo-Regular:h16
-    " set guifont=IosevkaNerdFontComplete-:h15
-    " set guifont=LiterationMonoNerdFontComplete-:h17
-    set guifont=mononokiNerdFontComplete-Regular:h18
-    " set guifont=MesloLGMNerdFontComplete-Regular:h15
-    set linespace=2
-    set guioptions-=m
-	set guioptions-=r
+    if has("mac")
+        set guioptions-=m
+        set guioptions-=r
+        set guifont=Menlo:h16
+        set linespace=2
+    else
+        set guifont=
+        set linespace = 2
+    endif
 	set guioptions-=T
 	set guioptions-=e
 	set guioptions-=L
