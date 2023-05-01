@@ -5,25 +5,11 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-buffer.vim'
-Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/fern-hijack.vim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'mhinz/vim-startify'
 Plug 'ydzhou/simple-statusline.vim'
 " Colorscheme
 Plug 'ydzhou/monocolor.vim'
-Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
-Plug 'rakr/vim-one'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'cocopon/iceberg.vim'
-Plug 'sainnhe/sonokai'
 Plug 'sainnhe/everforest'
 call plug#end()
 
@@ -65,17 +51,15 @@ if has("gui_running")
         set guioptions-=m
         set guioptions-=r
         set guifont=Menlo:h16
-        set linespace=2
     else
-        set guifont=
-        set linespace = 2
+        set guifont=monospace\ 12
     endif
 	set guioptions-=T
 	set guioptions-=e
 	set guioptions-=L
 	set lines=50
 	set columns=150
-	" set background=dark
+    set linespace=2
 	colorscheme monocolor
     autocmd InsertEnter,InsertLeave * set cul!
 else
@@ -126,13 +110,13 @@ autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype"
 """"""""""""""""""""""""""
 "" PLUGINS
 
-source ~/dotfiles/vim/configs/lspcomp.vim
-source ~/dotfiles/vim/configs/fern.vim
+" source ~/dotfiles/vim/configs/lspcomp.vim
+" source ~/dotfiles/vim/configs/fern.vim
 " source ~/dotfiles/vim/configs/ctrlp.vim
 " source ~/dotfiles/vim/configs/vimdirvish.vim
 source ~/dotfiles/vim/configs/fzf.vim
-source ~/dotfiles/vim/configs/startify.vim
-source ~/dotfiles/vim/configs/startify_quotes.vim
+" source ~/dotfiles/vim/configs/startify.vim
+" source ~/dotfiles/vim/configs/startify_quotes.vim
 
 " TComment
 "let g:tcommentOptions = {'whitespace' : 'no'}

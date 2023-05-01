@@ -17,6 +17,7 @@ GIT_EDITOR=vim
 PROMPT="%B%{$fg[red]%}%m%{$reset_color%}%b %{$fg[blue]%}%D{%L:%M %d-%m}%{$reset_color%} %{$fg[cyan]%}%~%{$reset_color%}"$'\n'"%B> %b"
 
 alias ls="ls -F"
+alias em="emacs -nw"
 
 export GOPATH=$HOME/Developer/go
 export GOMODCACHE=$GOPATH/pkg/mod
