@@ -19,7 +19,15 @@ PROMPT="%B%{$fg[red]%}%m%{$reset_color%}%b %{$fg[blue]%}%D{%L:%M %d-%m}%{$reset_
 alias ls="ls -F"
 alias em="emacs -nw"
 
+if [[ $(uname) == "Linux" ]]; then
+   export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+fi
+
 export GOPATH=$HOME/Developer/go
 export GOMODCACHE=$GOPATH/pkg/mod
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+
+if type pyenv &> /dev/null; then
+   eval "$(pyenv init -)"
+fi
